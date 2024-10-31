@@ -1,4 +1,4 @@
-public class CharacterManager : Singletone<CharacterManager>
+﻿public class CharacterManager : Singletone<CharacterManager>
 {
     public Player _player;
     public Player Player

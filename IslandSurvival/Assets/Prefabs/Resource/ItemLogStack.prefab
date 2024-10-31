@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5663987263593202883}
   - component: {fileID: 4659095073829841505}
   - component: {fileID: 272522653384918096}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ItemLogStack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b71588098592b145b24bb37f5d276ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemData: {fileID: 11400000, guid: 2b592099da298744abb1d64fc2efbe98, type: 2}
+  data: {fileID: 11400000, guid: 2b592099da298744abb1d64fc2efbe98, type: 2}
 --- !u!65 &4659095073829841505
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4106336476874473924}
   - component: {fileID: 3624087275154805894}
   - component: {fileID: 3685893460670119955}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: log_stack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
