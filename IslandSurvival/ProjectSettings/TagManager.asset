@@ -11,7 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
+  - Interactable
+  - Equip
+  - Resource
+  - Wall
+  - Ground
   - 
   - 
   - 
