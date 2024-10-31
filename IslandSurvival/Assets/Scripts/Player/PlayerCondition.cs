@@ -22,18 +22,18 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     void Update()
     {
         // 시간당 지속 변화값 반영
-        hunger.Subtract(hunger.passiveValue * Time.deltaTime);
-        stamina.Add(stamina.passiveValue * Time.deltaTime);
+        //hunger.Subtract(hunger.passiveValue * Time.deltaTime);
+        //stamina.Add(stamina.passiveValue * Time.deltaTime);
 
-        if (hunger.curValue <= 0f)
-        {
-            health.Subtract(noHungerHealthDecay * Time.deltaTime);
-        }
+        //if (hunger.curValue <= 0f)
+        //{
+        //    health.Subtract(noHungerHealthDecay * Time.deltaTime);
+        //}
 
-        if (health.curValue <= 0f)
-        {
-            Die();
-        }
+        //if (health.curValue <= 0f)
+        //{
+        //    Die();
+        //}
     }
 
     public void Heal(float amount)
