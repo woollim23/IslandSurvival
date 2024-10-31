@@ -11,7 +11,7 @@
 //     Attacking
 // }
 //
-// public class NPC : MonoBehaviour
+// public class NPC : MonoBehaviour, IDamagable
 // {
 //     [Header("Stats")]
 //     public int health;
@@ -182,5 +182,41 @@
 //         Vector3 directonToPlayer = CharacterManager.Instance.Player.transform.position - transform.position;
 //         float angel = Vector3.Angle(transform.forward, directonToPlayer);
 //         return angel < fieldOfView * 0.5f;
+//     }
+//
+//     public void TakePhysicalDamage(int damage)
+//     {
+//         health -= damage;
+//         if (health <= 0)
+//         {
+//             Die();
+//         }
+//
+//         StartCoroutine(DamageFlash());
+//     }
+//
+//     void Die()
+//     {
+//         for (int i = 0; i < dropOnDeath.Length; i++)
+//         {
+//             Instantiate(dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
+//         }
+//         
+//         Destroy(gameObject);
+//     }
+//
+//     IEnumerator DamageFlash()
+//     {
+//         for (int i = 0; i < meshRenderers.Length; i++)
+//         {
+//             meshRenderers[i].material.color =new Color(1.0f, 0.6f, 0.6f);
+//         }
+//         
+//         yield return new WaitForSeconds(0.1f);
+//
+//         for (int i = 0; i < meshRenderers.Length; i++)
+//         {
+//             meshRenderers[i].material.color = Color.white;
+//         }
 //     }
 // }
