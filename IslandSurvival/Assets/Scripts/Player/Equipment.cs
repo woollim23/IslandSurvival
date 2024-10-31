@@ -30,7 +30,7 @@ public class Equipment : MonoBehaviour
         // 현재 장착할 데이터 넣어줌
         curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<Equip>();
 
-        if (curEquip.doesIncrease == true)
+        if (curEquip.doesStatIncrease == true)
             EquipIncrease();
 
     }
@@ -39,7 +39,7 @@ public class Equipment : MonoBehaviour
     {
         if (curEquip != null)
         {
-            if (curEquip.doesIncrease == true)
+            if (curEquip.doesStatIncrease == true)
                 UnEquipIncrease();
             Destroy(curEquip.gameObject);
             curEquip = null;
@@ -49,12 +49,12 @@ public class Equipment : MonoBehaviour
     public void EquipIncrease()
     {
         // 장비 장착 효과
-        CharacterManager.Instance.Player.controller.moveSpeed += curEquip.increase;
+        controller.moveSpeed += curEquip.increase;
     }
 
     public void UnEquipIncrease()
     {
         // 장비 장착 효과 해제
-        CharacterManager.Instance.Player.controller.moveSpeed -= curEquip.increase;
+        controller.moveSpeed -= curEquip.increase;
     }
 }

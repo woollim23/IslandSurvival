@@ -9,8 +9,8 @@ public class Equip : MonoBehaviour
     public bool doesDealDamage; // 공격 데미지를 줄 수 있는지
     public int damage; // 데미지 얼마만큼 줄건지
 
-    [Header("Equipment")]
-    public bool doesIncrease; // 스탯 증가율이 있는지
+    [Header("Stat Increase")]
+    public bool doesStatIncrease; // 스탯 증가율이 있는지
     public float increase; // 증가 수치
 
     public virtual void OnAttackInput()
