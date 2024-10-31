@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Equipment : MonoBehaviour
@@ -29,7 +28,7 @@ public class Equipment : MonoBehaviour
         // 새로운 아이템 장착 
         UnEquip(); // 기존 장비 장착 해제
         // 현재 장착할 데이터 넣어줌
-        //curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<Equip>();
+        curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<Equip>();
 
         if (curEquip.doesIncrease == true)
             EquipIncrease();

@@ -4,7 +4,7 @@ using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class UIInventory : MonoBehaviour
 {
-    //public ItemSlot[] slots;
+    public ItemSlot[] slots;
     public GameObject inventoryWindow;
     public Transform slotPanel;
     public Transform dropPosition;
@@ -37,14 +37,14 @@ public class UIInventory : MonoBehaviour
         CharacterManager.Instance.Player.addItem += AddItem;
 
         inventoryWindow.SetActive(false);
-        //slots = new ItemSlot[slotPanel.childCount]; // 슬롯 판낼 자식의 갯수, 14개
+        slots = new ItemSlot[slotPanel.childCount]; // 슬롯 판낼 자식의 갯수, 14개
 
-        //for (int i = 0; i < slots.Length; i++)
-        //{
-        //    slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
-        //    slots[i].index = i;
-        //    slots[i].inventory = this;
-        //}
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
+            slots[i].index = i;
+            slots[i].inventory = this;
+        }
 
         ClearSelectedItemWindow();
     }
@@ -89,38 +89,38 @@ public class UIInventory : MonoBehaviour
 
     public void AddItem()
     {
-        //ItemData data = CharacterManager.Instance.Player.itemData;
+        ItemData data = CharacterManager.Instance.Player.itemData;
 
-        //// 현재 슬롯에 아이템이 스택 가능한지
-        //if (data.canStack)
-        //{
-        //    ItemSlot slot = GetItemStack(data);
-        //    if (slot != null)
-        //    {
-        //        slot.quantity++;
-        //        UpdateUI();
-        //        CharacterManager.Instance.Player.itemData = null;
-        //        return;
-        //    }
-        //}
+        // 현재 슬롯에 아이템이 스택 가능한지
+        if (data.canStack)
+        {
+            ItemSlot slot = GetItemStack(data);
+            if (slot != null)
+            {
+                slot.quantity++;
+                UpdateUI();
+                CharacterManager.Instance.Player.itemData = null;
+                return;
+            }
+        }
 
-        //// 현재 슬롯이 꽉차있다면,
-        //// 다른 비어 있는 슬롯 가져온다.
-        //ItemSlot emptySlot = GetEmptySlot();
+        // 현재 슬롯이 꽉차있다면,
+        // 다른 비어 있는 슬롯 가져온다.
+        ItemSlot emptySlot = GetEmptySlot();
 
-        //// 있다면, 슬롯에 아이템 추가
-        //if (emptySlot != null)
-        //{
-        //    emptySlot.item = data;
-        //    emptySlot.quantity = 1;
-        //    UpdateUI();
-        //    CharacterManager.Instance.Player.itemData = null;
-        //    return;
-        //}
+        // 있다면, 슬롯에 아이템 추가
+        if (emptySlot != null)
+        {
+            emptySlot.item = data;
+            emptySlot.quantity = 1;
+            UpdateUI();
+            CharacterManager.Instance.Player.itemData = null;
+            return;
+        }
 
-        //// 자리가 아예 없다면, 버려야지
-        //ThrowItem(data);
-        //CharacterManager.Instance.Player.itemData = null;
+        // 자리가 아예 없다면, 버려야지
+        ThrowItem(data);
+        CharacterManager.Instance.Player.itemData = null;
     }
 
     public void ThrowItem(ItemData data)
@@ -131,19 +131,19 @@ public class UIInventory : MonoBehaviour
 
     public void UpdateUI()
     {
-        //// 슬롯 배열을 순회
-        //for (int i = 0; i < slots.Length; i++)
-        //{
-        //    if (slots[i].item != null)
-        //    {
-        //        // 데이터가 있다면 세팅해라    
-        //        slots[i].Set();
-        //    }
-        //    else
-        //    {
-        //        slots[i].Clear();
-        //    }
-        //}
+        // 슬롯 배열을 순회
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item != null)
+            {
+                // 데이터가 있다면 세팅해라    
+                slots[i].Set();
+            }
+            else
+            {
+                slots[i].Clear();
+            }
+        }
     }
 
     ItemSlot GetItemStack(ItemData data)

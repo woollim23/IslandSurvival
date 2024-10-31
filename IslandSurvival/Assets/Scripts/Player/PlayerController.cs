@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -48,7 +49,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         CheckWall();
-        IsGrounded();
     }
 
     private void LateUpdate()
