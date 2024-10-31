@@ -303,7 +303,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 1024
-  cameraContainer: {fileID: 0}
+  cameraContainer: {fileID: 2406495836332921384}
   minXLook: -65
   maxXLook: 65
   lookSensitivity: 0.1
