@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 2534231472048164924}
   - component: {fileID: 4944576394475359993}
   - component: {fileID: 8785571487021550670}
+  - component: {fileID: 8206966996393025198}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -373,7 +374,19 @@ MonoBehaviour:
     m_ActionId: a283f1ca-02ac-4a0b-9c64-1d234a36ba58
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5205965606744567354}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnCancel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 97d42bb8-57d2-4400-afe8-d6c8cae78c57
     m_ActionName: Player/Cancel[/Keyboard/f]
   - m_PersistentCalls:
@@ -412,6 +425,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   condition: {fileID: 0}
   equip: {fileID: 0}
+  animator: {fileID: 0}
   itemData: {fileID: 0}
   dropPosition: {fileID: 7400836478674796517}
 --- !u!114 &5205965606744567354
@@ -439,6 +453,8 @@ MonoBehaviour:
   maxXLook: 65
   lookSensitivity: 0.1
   canLook: 1
+  equipment: {fileID: 0}
+  playerAttack: {fileID: 0}
 --- !u!114 &2534231472048164924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +502,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curEquip: {fileID: 0}
   equipParent: {fileID: 8912527794761060808}
+--- !u!114 &8206966996393025198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3413744943413733950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c57eccb370ba14ba8160624699d60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7722782754105118421
 GameObject:
   m_ObjectHideFlags: 0

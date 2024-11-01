@@ -2,11 +2,6 @@
 using System.Collections;
 using UnityEngine;
 
-public interface IDamagable
-{
-    void TakePhysicalDamage(int damage);
-}
-
 public class PlayerCondition : MonoBehaviour, IDamagable
 {
     public UICondition uiCondition;
