@@ -311,8 +311,8 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8785571487021550670}
-        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+      - m_Target: {fileID: 5205965606744567354}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnAttackInput
         m_Mode: 0
         m_Arguments:
@@ -453,6 +453,7 @@ MonoBehaviour:
   maxXLook: 65
   lookSensitivity: 0.1
   canLook: 1
+  _capsuleCollider: {fileID: 0}
   equipment: {fileID: 0}
   playerAttack: {fileID: 0}
 --- !u!114 &2534231472048164924
