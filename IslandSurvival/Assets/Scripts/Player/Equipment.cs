@@ -7,20 +7,10 @@ public class Equipment : MonoBehaviour
     public Transform equipParent; // 장비를 달아줄 위치(카메라 위치)
 
     private PlayerController controller;
-    private PlayerCondition condition;
 
     void Start()
     {
         controller = CharacterManager.Instance.Player.controller;
-        condition = CharacterManager.Instance.Player.condition;
-    }
-
-    public void OnAttackInput(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed && curEquip != null && controller.canLook)
-        {
-            curEquip.OnAttackInput();
-        }
     }
 
     public void EquipNew(ItemData data)
@@ -32,7 +22,6 @@ public class Equipment : MonoBehaviour
 
         if (curEquip.doesStatIncrease == true)
             EquipIncrease();
-
     }
 
     public void UnEquip()

@@ -6,6 +6,7 @@ public class Player : Singletone<Player>
     public PlayerController controller;
     public PlayerCondition condition;
     public Equipment equip;
+    public Animator animator;
 
     public ItemData itemData;
     public Action addItem;
@@ -19,5 +20,6 @@ public class Player : Singletone<Player>
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
         equip = GetComponent<Equipment>();
+        animator = GetComponent<Animator>();
     }
 }
