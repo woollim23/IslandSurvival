@@ -2,7 +2,7 @@
 
 public class Resource : MonoBehaviour
 {
-    public ItemData itemToGive;
+    public ItemData itemToGive;    
     public int quantityPerHit = 1;
     public int capacity;
 
@@ -19,6 +19,8 @@ public class Resource : MonoBehaviour
         if (capacity <= 0)
         {
             Destroy(gameObject);
+            //TODO : 다 잘려나가면 나무밑동 UI Instatiate 필요
+            //Instantiate(itemToShow.dropPrefab,)
         }
     }
 }
