@@ -288,10 +288,6 @@ PrefabInstance:
       propertyPath: promptText
       value: 
       objectReference: {fileID: 4678663983936493918}
-    - target: {fileID: 8410499193473631455, guid: 9b9b80d7e4fd0234cbb2e6e05cb86115, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: -3963241562183589234, guid: f0fdbd1a5a2dabb47ac4174d6a5d50de, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
