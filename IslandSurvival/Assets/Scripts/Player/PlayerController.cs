@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public event Action<Equip> onAttackAction;
 
     private Rigidbody _rigidbody;
-    CapsuleCollider _capsuleCollider;
+    public CapsuleCollider _capsuleCollider;
     public Equipment equipment;
     public PlayerAttack playerAttack;
 
