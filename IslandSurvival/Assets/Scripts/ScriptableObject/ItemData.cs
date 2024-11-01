@@ -1,11 +1,11 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
 public enum ItemType
 {
-    Consumable, //¼·Ãë°¡´É
-    Equipable, //ÀåÂø°¡´É
-    Resource //Á¦ÀÛ°¡´ÉÀÚ¿ø
+    Consumable, //ì„­ì·¨ê°€ëŠ¥
+    Equipable, //ì¥ì°©ê°€ëŠ¥
+    Resource //ì œì‘ê°€ëŠ¥ìì›
 }
 
 public enum ConsumableType

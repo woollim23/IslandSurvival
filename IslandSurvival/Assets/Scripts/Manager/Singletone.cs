@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 public class Singletone<T> : MonoBehaviour where T : Component
 {
     private static T _instance;
@@ -12,8 +12,8 @@ public class Singletone<T> : MonoBehaviour where T : Component
                 _instance = (T)FindObjectOfType(typeof(T));
                 if (_instance == null)
                 {
-                    string tName = typeof(T).ToString(); // ¿ÀºêÁ§Æ® ÀÌ¸§ Á¤ÇÏ±â
-                    var singletoneObj = new GameObject(tName); // Å¸ÀÔ ÀÌ¸§´ë·Î ÁöÁ¤µÇ¾î »ı¼ºµÊ
+                    string tName = typeof(T).ToString(); // ì˜¤ë¸Œì íŠ¸ ì´ë¦„ ì •í•˜ê¸°
+                    var singletoneObj = new GameObject(tName); // íƒ€ì… ì´ë¦„ëŒ€ë¡œ ì§€ì •ë˜ì–´ ìƒì„±ë¨
                     _instance = singletoneObj.AddComponent<T>();
                 }
             }

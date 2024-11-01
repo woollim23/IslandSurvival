@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public bool canLook = true;
 
     public Action inventory;
-    public event Action onSettingScreen;
+    public event Action onCancelStruct;
 
     private Rigidbody _rigidbody;
     CapsuleCollider _capsuleCollider;
@@ -174,12 +174,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnSetting(InputAction.CallbackContext context)
+    public void OnCancel(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            onSettingScreen?.Invoke();
-            ToggleCursor();
+            onCancelStruct?.Invoke();
         }
     }
 

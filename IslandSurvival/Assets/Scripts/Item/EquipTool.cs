@@ -5,7 +5,7 @@ public class EquipTool : Equip
     public float attackRate; // 공격 주기
     private bool attacking;
     public float attackDistance; // 최대 공격 가능 거리
-    public float useStamina;
+    public float useAttackStamina; // 스태미나 사용량
 
     private Animator animator;
     private Camera _camera;
@@ -20,7 +20,7 @@ public class EquipTool : Equip
     {
         if (!attacking)
         {
-            if (CharacterManager.Instance.Player.condition.UseStamina(useStamina))
+            if (CharacterManager.Instance.Player.condition.UseStamina(useAttackStamina))
             {
                 attacking = true;
                 animator.SetTrigger("Attack");
