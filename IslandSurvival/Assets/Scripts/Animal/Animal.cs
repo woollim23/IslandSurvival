@@ -26,8 +26,6 @@ public class Animal : MonoBehaviour, IDamagable
         {
             Die();
         }
-
-        // StartCoroutine(DamageFlash());
     }
 
     public virtual void Die()
@@ -39,19 +37,4 @@ public class Animal : MonoBehaviour, IDamagable
 
         Destroy(gameObject);
     }
-
-    // protected IEnumerator DamageFlash()
-    // {
-    //     for (int i = 0; i < meshRenderers.Length; i++)
-    //     {
-    //         meshRenderers[i].material.color =new Color(1.0f, 0.6f, 0.6f);
-    //     }
-    //     
-    //     yield return new WaitForSeconds(0.1f);
-    //
-    //     for (int i = 0; i < meshRenderers.Length; i++)
-    //     {
-    //         meshRenderers[i].material.color = Color.white;
-    //     }
-    // }
 }
