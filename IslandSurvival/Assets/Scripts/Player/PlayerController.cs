@@ -1,7 +1,9 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,15 +30,19 @@ public class PlayerController : MonoBehaviour
     public bool canLook = true;
 
     public Action inventory;
-    public event Action onSettingScreen;
+    public event Action onCancelStruct;
+    public event Action<Equip> onAttackAction;
 
     private Rigidbody _rigidbody;
     CapsuleCollider _capsuleCollider;
+    public Equipment equipment;
+    public PlayerAttack playerAttack;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+        equipment = GetComponent<Equipment>();
     }
 
     private void Start()
@@ -174,12 +180,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnSetting(InputAction.CallbackContext context)
+    public void OnCancel(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            onSettingScreen?.Invoke();
-            ToggleCursor();
+            onCancelStruct?.Invoke();
+        }
+    }
+
+    // TODO : PlayerAttack
+    public void OnAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed && canLook)
+        {
+            onAttackAction?.Invoke(equipment.curEquip);
         }
     }
 
