@@ -11,7 +11,7 @@
 //     Attacking
 // }
 //
-// public class NPC : MonoBehaviour, IDamagable
+// public class Animal : MonoBehaviour, IDamagable
 // {
 //     [Header("Stats")]
 //     public int health;

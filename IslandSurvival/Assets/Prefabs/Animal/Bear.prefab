@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2024782140421401359}
   - component: {fileID: 7004175178869175450}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
