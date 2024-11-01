@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.TextCore.Text;
 
 public class PredatorAI : AnimalAI
 {
@@ -12,7 +10,13 @@ public class PredatorAI : AnimalAI
     private float lastAttackTime;
     public float attackDistance;
     private NavMeshPath path;
+    private Renderer[] meshRenderers;
 
+    private void Awake()
+    {
+        meshRenderers = GetComponentsInChildren<Renderer>();
+    }
+    
     protected override void Update()
     {
         base.Update();
@@ -52,11 +56,11 @@ public class PredatorAI : AnimalAI
             if (Time.time - lastAttackTime > attackRate)
             {
                 lastAttackTime = Time.time;
-                //CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().TakePhysicalDamage(damage);
+                CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().TakePhysicalDamage(damage);
                 animator.speed = 1;
                 animator.SetTrigger("Attack");
                 
-                // StartCoroutine(DamageFlash());
+                StartCoroutine(DamageFlash());
             }
         }
         else
@@ -95,18 +99,18 @@ public class PredatorAI : AnimalAI
         }
     }
     
-    // protected IEnumerator DamageFlash()
-    // {
-    //     for (int i = 0; i < meshRenderers.Length; i++)
-    //     {
-    //         meshRenderers[i].material.color =new Color(1.0f, 0.6f, 0.6f);
-    //     }
-    //     
-    //     yield return new WaitForSeconds(0.1f);
-    //
-    //     for (int i = 0; i < meshRenderers.Length; i++)
-    //     {
-    //         meshRenderers[i].material.color = Color.white;
-    //     }
-    // }
+    protected IEnumerator DamageFlash()
+    {
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].material.color =new Color(1.0f, 0.6f, 0.6f);
+        }
+        
+        yield return new WaitForSeconds(0.1f);
+    
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].material.color = Color.white;
+        }
+    }
 }
