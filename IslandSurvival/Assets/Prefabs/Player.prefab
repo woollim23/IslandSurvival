@@ -311,8 +311,8 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8785571487021550670}
-        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+      - m_Target: {fileID: 5205965606744567354}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnAttackInput
         m_Mode: 0
         m_Arguments:
@@ -453,6 +453,7 @@ MonoBehaviour:
   maxXLook: 65
   lookSensitivity: 0.1
   canLook: 1
+  _capsuleCollider: {fileID: 0}
   equipment: {fileID: 0}
   playerAttack: {fileID: 0}
 --- !u!114 &2534231472048164924
@@ -639,7 +640,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -3963241562183589234, guid: f0fdbd1a5a2dabb47ac4174d6a5d50de, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
