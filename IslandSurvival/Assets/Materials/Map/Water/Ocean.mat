@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterFall
+  m_Name: Ocean
   m_Shader: {fileID: -6465566751694194690, guid: 1f24b81616dfa884b92197e1542ec74e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -32,7 +32,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: Vector1_96CBBEA4
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -103,20 +103,20 @@ Material:
     m_Ints: []
     m_Floats:
     - BOOLEAN_3B4DE909: 0
-    - Vector1_25A87481: 0.248
+    - Vector1_25A87481: 0.479
     - Vector1_2D2F8B59: 0.273
     - Vector1_36EC8EBD: 1
     - Vector1_523CF9F9: 0.117
-    - Vector1_5AAC92D2: -0.1
+    - Vector1_5AAC92D2: 0.5
     - Vector1_82AFA5C7: 0.078
     - Vector1_928B3B41: 10.66
-    - Vector1_960E898F: 0.216
-    - Vector1_96CBBEA4: 0.176
+    - Vector1_960E898F: 0
+    - Vector1_96CBBEA4: 0.149
     - Vector1_A77710BF: 1.18
-    - Vector1_D1DAD1FD: 0.172
-    - Vector1_DABF4AC1: 1
+    - Vector1_D1DAD1FD: 0.144
+    - Vector1_DABF4AC1: 0.97
     - Vector1_E285A04C: 0.171
-    - Vector1_E551740D: 0
+    - Vector1_E551740D: 0.405
     - Vector1_E76F4BD3: 0.09
     - Vector1_F278FEE0: 0
     - Vector1_FA7C3821: -0.27
@@ -141,7 +141,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 1
-    - _QueueOffset: -3
+    - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -152,9 +152,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_1DEAAAEB: {r: 0.6062656, g: 0.63182706, b: 0.9811321, a: 0.52156866}
-    - Color_51316B18: {r: 0, g: 0.08005396, b: 0.20754719, a: 1}
-    - Color_B3D1197F: {r: 0.5254902, g: 0.8342713, b: 1, a: 0.65882355}
+    - Color_1DEAAAEB: {r: 0.83440566, g: 0.6556604, b: 1, a: 0.52156866}
+    - Color_51316B18: {r: 0, g: 0.4395949, b: 0.6509434, a: 1}
+    - Color_B3D1197F: {r: 0.3726415, g: 0.84985906, b: 1, a: 0.65882355}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
