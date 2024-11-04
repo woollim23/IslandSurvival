@@ -15,5 +15,4 @@ public class Equip : MonoBehaviour
     [Header("Stat Increase")]
     public bool doesStatIncrease; // 스탯 증가율이 있는지
     public float increase; // 증가 수치
-
 }

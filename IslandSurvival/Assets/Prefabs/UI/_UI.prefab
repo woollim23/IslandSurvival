@@ -2897,8 +2897,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 6415638627388606223}
-  hunger: {fileID: 4412533047915342839}
   stamina: {fileID: 5620981659356347900}
+  hunger: {fileID: 4412533047915342839}
+  thirst: {fileID: 0}
+  temperature: {fileID: 0}
 --- !u!1 &6667306973039102536
 GameObject:
   m_ObjectHideFlags: 0

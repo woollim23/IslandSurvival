@@ -18,7 +18,7 @@ public class Condition : MonoBehaviour
 
     void Update()
     {
-        //uiBar.fillAmount = GetPercentage(); // 바 변경
+        uiBar.fillAmount = GetPercentage(); // 바 변경
     }
 
 
