@@ -96,8 +96,9 @@ GameObject:
   - component: {fileID: 7068169498500721917}
   - component: {fileID: 2752973178299444818}
   - component: {fileID: 1500890678584542504}
+  - component: {fileID: -896548253262492631}
   m_Layer: 7
-  m_Name: ItemBottle
+  m_Name: ItemStaminaPortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,8 +113,8 @@ Transform:
   m_GameObject: {fileID: 5022958333376534856}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 0.3, z: 6}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1709743344873565721}
@@ -167,6 +168,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 3.4, z: 2}
   m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!114 &-896548253262492631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022958333376534856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b71588098592b145b24bb37f5d276ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: a44f875a573e8294190e240c9ea0d1f7, type: 2}
 --- !u!1 &6549332637691129641
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4107088010700132711}
   - component: {fileID: 6660084484014078736}
   - component: {fileID: 3794128902474727133}
+  - component: {fileID: 2719226986476747157}
   m_Layer: 7
-  m_Name: ItemBigBottle
+  m_Name: ItemHealthPortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 2521358737158509202}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.86, y: 0.4, z: 5}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2424138194913406119}
@@ -82,6 +83,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6, y: 5.7, z: 1.6}
   m_Center: {x: 0, y: -0.7, z: 0}
+--- !u!114 &2719226986476747157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2521358737158509202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b71588098592b145b24bb37f5d276ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 75b60f0916eb76b4fab248db5d53f48d, type: 2}
 --- !u!1 &3044330297579352923
 GameObject:
   m_ObjectHideFlags: 0

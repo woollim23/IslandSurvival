@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 81843826603396852}
   - component: {fileID: 5522530264302407921}
-  - component: {fileID: 2199766118563457067}
   - component: {fileID: 1646799358738583608}
+  - component: {fileID: 8115659630400347706}
   m_Layer: 7
   m_Name: ItemSteak
   m_TagString: Untagged
@@ -146,19 +146,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &2199766118563457067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239010626601046448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b105079f8cc113e42b693c0422f079d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 68926c0deca9a6b4181e07e62f90f788, type: 2}
 --- !u!65 &1646799358738583608
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -180,3 +167,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.11, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8115659630400347706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239010626601046448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b71588098592b145b24bb37f5d276ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 0f122672fedf548438b0c9982ca6e579, type: 2}

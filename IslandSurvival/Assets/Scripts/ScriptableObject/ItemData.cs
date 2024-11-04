@@ -12,8 +12,9 @@ public enum ItemType
 public enum ConsumableType
 {
     Health,
+    Stamina,
     Hunger,
-    Stemina,
+    Thirst,
     Doping
 }
 
