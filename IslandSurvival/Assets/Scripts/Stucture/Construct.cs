@@ -8,12 +8,14 @@ public class Construct : MonoBehaviour
     public PlayerController controller;
     CapsuleCollider capsuleCollider;
 
+    public GameObject craftCanvas;
+
     void Start()
     {
         CharacterManager.Instance.Player.controller.onCancelStruct += CancelStruct; // 취소 이벤트 등록
         capsuleCollider = CharacterManager.Instance.Player.controller._capsuleCollider;
     }
-        
+
     void Update()
     {
         //RaycastHit hit = 
@@ -26,9 +28,39 @@ public class Construct : MonoBehaviour
     {
         // 건축 취소 함수
     }
+    public void OnCraftButton() //제작하기
+    {
+        /*
+        제작가능 아이템일 경우
+        제작하기 버튼 활성화
+        * UI인벤토리 제작하기 버튼 추가구현 필요
+        On제작하기버튼()
+        */
+        craftCanvas.SetActive(true);
+        //크래프트내부에서 또 재작버튼 = 완성된 아이템이 인벤토리로 들어가게만듬
+    }
+
+
+    public void OnCancleButton() //취소하기
+    {
+        craftCanvas.SetActive(false);
+    }
+    public void OnBuildButton() 
+    {
+        //건축하기= 현재는 그냥 버튼을 누르게 되면 실행되게함 = UI인벤토리 추가구현 필요
+        /*건축물일경우
+        제작하기 버튼 활성화
+        플레이어의 왼손 위치에 작은 건물모양 들고있기*/
+    }
+
+    private void isBuildable()
+    { 
+    
+    }
 
 
     /*
+     * UI인벤토리 추가구현 필요
      제작가능 아이템일 경우
     제작하기 버튼 활성화
     On제작하기버튼()
@@ -39,12 +71,7 @@ public class Construct : MonoBehaviour
     건축물일경우
     제작하기 버튼 활성화
 
-    On건축하기버튼()
-    {
-      플레이어의 왼손 위치에 작은 건물모양 들고있기
-    }
-
-    On
+    
 
 
     
