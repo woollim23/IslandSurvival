@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.TextCore.Text;
 
 public class PreyAI : AnimalAI
 {
+    float fleeDistance;
+    
     protected override void Update()
     {
         base.Update();
@@ -17,7 +16,7 @@ public class PreyAI : AnimalAI
                 PassiveUpdate();
                 break;
             case AIState.Runaway:
-                //RunawayUpdate();
+                RunawayUpdate();
                 break;
         }
     }
@@ -28,12 +27,23 @@ public class PreyAI : AnimalAI
 
         switch (aiState)
         {
-            case AIState.Attacking:
+            case AIState.Runaway:
                 agent.speed = animal.runSpeed;
                 agent.isStopped = false;
                 break;
         }
         
         animator.speed = agent.speed / animal.walkSpeed;
+    }
+    
+    void RunawayUpdate()
+    {
+        Vector3 directionAwayFromPlayer = transform.position - CharacterManager.Instance.Player.transform.position;
+        Vector3 runPosition = transform.position + directionAwayFromPlayer.normalized * fleeDistance;
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(runPosition, out hit, 5.0f, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+        }
     }
 }
