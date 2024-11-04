@@ -25,14 +25,14 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnAttackInput(Equip equip)
     {
-        if (!attacking)
+        if (!attacking && equip != null)
         {
             if (condition.UseStamina(equip.useAttackStamina))
             {
                 attacking = true;
                 //animator.SetTrigger("Attack");
                 Invoke("OnCanAttack", equip.attackRate);
-                
+                Debug.Log("공격!");
                 //공격 조건 맞을 시 OnHit
                 OnHit(equip);
             }
