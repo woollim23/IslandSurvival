@@ -7,28 +7,32 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public UICondition uiCondition;
 
     Condition health { get { return uiCondition.health; } }
-    Condition hunger { get { return uiCondition.hunger; } }
     Condition stamina { get { return uiCondition.stamina; } }
+    Condition hunger { get { return uiCondition.hunger; } }
+    Condition thirst { get { return uiCondition.thirst; } }
+    Condition temperature { get { return uiCondition.temperature; } }
 
-    public float noHungerHealthDecay;
+    public float healthDecay;
 
     public event Action onTakeDamage;
 
     void Update()
     {
         // 시간당 지속 변화값 반영
-        //hunger.Subtract(hunger.passiveValue * Time.deltaTime);
-        //stamina.Add(stamina.passiveValue * Time.deltaTime);
+        hunger.Subtract(hunger.passiveValue * Time.deltaTime);
+        thirst.Subtract(thirst.passiveValue * Time.deltaTime);
+        stamina.Add(stamina.passiveValue * Time.deltaTime);
 
-        //if (hunger.curValue <= 0f)
-        //{
-        //    health.Subtract(noHungerHealthDecay * Time.deltaTime);
-        //}
+        if (hunger.curValue <= 0f)
+        {
+            health.Subtract(healthDecay * Time.deltaTime);
+            thirst.Subtract(healthDecay * Time.deltaTime);
+        }
 
-        //if (health.curValue <= 0f)
-        //{
-        //    Die();
-        //}
+        if (health.curValue <= 0f)
+        {
+            Die();
+        }
     }
 
     public void Heal(float amount)
