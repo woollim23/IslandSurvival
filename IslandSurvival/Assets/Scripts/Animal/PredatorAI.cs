@@ -78,7 +78,6 @@ public class PredatorAI : AnimalAI
                 CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().TakePhysicalDamage(damage);
                 animator.speed = 1;
                 animator.SetTrigger("Attack");
-                
                 StartCoroutine(DamageFlash());
             }
         }
