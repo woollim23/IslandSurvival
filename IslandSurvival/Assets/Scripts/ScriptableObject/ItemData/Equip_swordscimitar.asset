@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d58d45e128c8e434bbcafff7f05e96f8, type: 3}
+  m_Name: Equip_swordscimitar
+  m_EditorClassIdentifier: 
+  displayName: "\uD398\uB974\uC2DC\uC544\uC2DD \uC124\uB4DD\uB3C4\uAD6C"
+  description: "\uB204\uAD70\uAC00\uB97C \uC124\uB4DD\uD558\uAE30\uC5D0 \uC88B\uC740
+    \uB3C4\uAD6C\uC785\uB2C8\uB2E4."
+  type: 1
+  icon: {fileID: 0}
+  dropPrefab: {fileID: 8658264309298292162, guid: ff891f9f037f6734097d74af8b97951a, type: 3}
+  canStack: 0
+  maxStackAmount: 0
+  consumables: []
+  equipPrefab: {fileID: 9073055937950271550, guid: c66c7cd4a1cc18343aa9e57dd1ccb7c5, type: 3}
