@@ -38,21 +38,21 @@ public class PlayerController : MonoBehaviour
     public event Action onAttackEvent; // 공격 애니 이벤트
 
     private Rigidbody _rigidbody;
-    public BoxCollider _capsuleCollider;
+    public BoxCollider _boxCollider;
     public Equipment equipment;
     public PlayerAttack playerAttack;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _capsuleCollider = GetComponent<BoxCollider>();
+        _boxCollider = GetComponent<BoxCollider>();
         equipment = GetComponent<Equipment>();
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; // 커서 안보이게 숨기기
-        bottomOffset = _capsuleCollider.bounds.extents.y; //  트랜스폼 높이의 절반
+        bottomOffset = _boxCollider.bounds.extents.y; //  트랜스폼 높이의 절반
     }
 
     private void FixedUpdate()
