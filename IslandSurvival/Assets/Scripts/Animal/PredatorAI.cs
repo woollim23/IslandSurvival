@@ -11,12 +11,20 @@ public class PredatorAI : AnimalAI
     public float attackDistance;
     private NavMeshPath path;
     private Renderer[] meshRenderers;
+    private AudioSource audioSource;
+    public float fadeTime;
+    public float maxVolume;
+    private float targetVolume;
 
     private void Awake()
     {
         meshRenderers = GetComponentsInChildren<Renderer>();
+        targetVolume = 0;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = targetVolume;
+        audioSource.Play();
     }
-    
+
     protected override void Update()
     {
         base.Update();
@@ -42,6 +50,7 @@ public class PredatorAI : AnimalAI
             case AIState.Attacking:
                 agent.speed = animal.runSpeed;
                 agent.isStopped = false;
+                audioSource.volume = Mathf.MoveTowards(audioSource.volume, targetVolume, (maxVolume / fadeTime) * Time.deltaTime);
                 break;
         }
         
