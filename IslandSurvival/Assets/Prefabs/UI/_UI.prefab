@@ -877,6 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: []
+  slot: {fileID: 0}
   inventoryWindow: {fileID: 2438538464192130768}
   slotPanel: {fileID: 6081920228972574425}
   dropPosition: {fileID: 0}
@@ -887,6 +888,8 @@ MonoBehaviour:
   useButton: {fileID: 4942051509210905952}
   equipButton: {fileID: 6374772228082400664}
   unequipButton: {fileID: 421344993547779425}
+  CraftButton: {fileID: 0}
+  constructButton: {fileID: 0}
   dropButton: {fileID: 8192966198326911832}
 --- !u!1 &2820328838862850948
 GameObject:
