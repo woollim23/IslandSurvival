@@ -36,6 +36,16 @@ public class PreyAI : AnimalAI
         animator.speed = agent.speed / animal.walkSpeed;
     }
     
+    protected override void PassiveUpdate()
+    {
+        base.PassiveUpdate();
+
+        if (playerDistance < detecDistance)
+        {
+            SetState(AIState.Runaway);
+        }
+    }
+    
     void RunawayUpdate()
     {
         Vector3 directionAwayFromPlayer = transform.position - CharacterManager.Instance.Player.transform.position;

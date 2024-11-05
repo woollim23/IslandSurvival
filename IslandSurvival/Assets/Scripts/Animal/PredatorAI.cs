@@ -57,6 +57,16 @@ public class PredatorAI : AnimalAI
         animator.speed = agent.speed / animal.walkSpeed;
     }
     
+    protected override void PassiveUpdate()
+    {
+        base.PassiveUpdate();
+
+        if (playerDistance < detecDistance)
+        {
+            SetState(AIState.Attacking);
+        }
+    }
+    
     void AttackingUpdate()
     {
         if (playerDistance < attackDistance && IsPlayerInFieldOfView())
@@ -95,16 +105,6 @@ public class PredatorAI : AnimalAI
                 agent.isStopped = true;
                 SetState(AIState.Wandering);
             }
-        }
-    }
-    
-    protected override void PassiveUpdate()
-    {
-        base.PassiveUpdate();
-
-        if (playerDistance < detecDistance)
-        {
-            SetState(AIState.Attacking);
         }
     }
     

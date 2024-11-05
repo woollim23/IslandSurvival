@@ -64,11 +64,11 @@ public class PlayerAttack : MonoBehaviour
                 damagable.TakePhysicalDamage(equip.damage);
                 Debug.Log("적 공격");
 
-                // 대상이 Enemy(NPC)이고 체력이 0 이하일 경우 사망 처리
-                //if (damagable is NPC npc && npc.health <= 0)
-                //{
-                //    npc.Die();
-                //}
+                //대상이 Enemy(NPC)이고 체력이 0 이하일 경우 사망 처리
+                if (damagable is Animal animal && animal.health <= 0)
+                {
+                    animal.Die();
+                }
             }
         }
     }

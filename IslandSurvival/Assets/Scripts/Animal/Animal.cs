@@ -20,6 +20,7 @@ public class Animal : MonoBehaviour, IDamagable
     public void TakePhysicalDamage(int damage)
     {
         health -= damage;
+        Debug.Log("적 공격받음!");
         if (health <= 0)
         {
             Die();
