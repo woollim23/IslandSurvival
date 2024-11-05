@@ -17,8 +17,10 @@ MonoBehaviour:
     \uB9C9\uC544\uC900\uB2E4."
   type: 3
   icon: {fileID: 21300000, guid: f8c33fd59b04ee74ab863088157777f5, type: 3}
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 6597567845748427124, guid: f470ae3ab00eab943b971ac482aaf026, type: 3}
+  canStack: 1
+  maxStackAmount: 10
   Constructables:
   - type: 0
-    value: 10
-    duration: 10
+    Needvalue: 5
+    setDuration: 10
