@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public event Action onAttackEvent; // 공격 애니 이벤트
+
     private bool attacking;
 
     private Camera _camera;
@@ -27,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (condition.UseStamina(equip.useAttackStamina))
             {
+                onAttackEvent?.Invoke();
                 attacking = true;
                 Invoke("OnCanAttack", equip.attackRate);
                 Debug.Log("공격!");
@@ -43,8 +47,8 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnHit(Equip equip)
     {
-        //Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        Ray ray = new Ray(CharacterManager.Instance.Player.transform.position + Vector3.up * 1.5f, CharacterManager.Instance.Player.transform.forward); // 약간 위쪽에서 레이 발사
+        Ray ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        // Ray ray = new Ray(CharacterManager.Instance.Player.transform.position + Vector3.up * 1.5f, CharacterManager.Instance.Player.transform.forward); // 약간 위쪽에서 레이 발사
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, equip.attackDistance))
@@ -57,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
             }
 
             // Enemy라면 데미지 입히기
-            if (hit.collider.TryGetComponent(out IDamagable damagable))
+            if (hit.collider.TryGetComponent(out IDamagable damagable) && damagable != (IDamagable)this)
             {
                 damagable.TakePhysicalDamage(equip.damage);
                 Debug.Log("적 공격");
