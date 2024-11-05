@@ -5,6 +5,7 @@ using static UnityEditor.Timeline.Actions.MenuPriority;
 public class UIInventory : MonoBehaviour
 {
     public ItemSlot[] slots;
+    public ItemSlot slot;
     public GameObject inventoryWindow;
     public Transform slotPanel;
     public Transform dropPosition;
@@ -17,6 +18,8 @@ public class UIInventory : MonoBehaviour
     public GameObject useButton;
     public GameObject equipButton;
     public GameObject unequipButton;
+    public GameObject CraftButton;
+    public GameObject constructButton;
     public GameObject dropButton;
 
     private PlayerController controller;
@@ -67,6 +70,8 @@ public class UIInventory : MonoBehaviour
         useButton.SetActive(false);
         equipButton.SetActive(false);
         unequipButton.SetActive(false);
+        CraftButton.SetActive(false);
+        constructButton.SetActive(false);
         dropButton.SetActive(false);
     }
 
@@ -89,7 +94,7 @@ public class UIInventory : MonoBehaviour
 
     public void AddItem()
     {
-        ItemData data = CharacterManager.Instance.Player.itemData;
+        ItemData data = CharacterManager.Instance.Player.itemData;        
 
         // 현재 슬롯에 아이템이 스택 가능한지
         if (data.canStack)
@@ -99,7 +104,7 @@ public class UIInventory : MonoBehaviour
             {
                 slot.quantity++;
                 UpdateUI();
-                CharacterManager.Instance.Player.itemData = null;
+                CharacterManager.Instance.Player.itemData = null;                
                 return;
             }
         }
@@ -114,7 +119,7 @@ public class UIInventory : MonoBehaviour
             emptySlot.item = data;
             emptySlot.quantity = 1;
             UpdateUI();
-            CharacterManager.Instance.Player.itemData = null;
+            CharacterManager.Instance.Player.itemData = null;            
             return;
         }
 
@@ -197,6 +202,8 @@ public class UIInventory : MonoBehaviour
         useButton.SetActive(selectedItem.type == ItemType.Consumable);
         equipButton.SetActive(selectedItem.type == ItemType.Equipable && !slots[index].equipped);
         unequipButton.SetActive(selectedItem.type == ItemType.Equipable && slots[index].equipped);
+        CraftButton.SetActive(selectedItem.type == ItemType.Resource);
+        constructButton.SetActive(selectedItem.type == ItemType.Constructable);
         dropButton.SetActive(true);
 
     }
