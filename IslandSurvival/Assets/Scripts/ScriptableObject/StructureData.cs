@@ -13,8 +13,8 @@ public enum Constructable
 public class ItemDataConstructable
 {
     public Constructable type;
-    public float value;
-    public float duration;
+    public float Needvalue;
+    public float setDuration;
 }
 
 
@@ -26,7 +26,11 @@ public class StructureData : ScriptableObject
     public string structureDescription;
     public ItemType type;
     public Sprite icon;
-    public GameObject dropPrefab;    
+    public GameObject dropPrefab;
+
+    [Header("Stacking")]
+    public bool canStack;
+    public int maxStackAmount;
 
     [Header("Constructable")]
     public ItemDataConstructable[] Constructables;
