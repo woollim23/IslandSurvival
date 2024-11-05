@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity; // 회전 민감도
     private Vector2 mouseDelta; // inputsystem으로 입력 받는 마우스 델타값
     public bool canLook = true;
+    [SerializeField]float camHeight = 2.0f;   // 카메라의 높이
+    [SerializeField] float camDistance = 4.0f; // 캐릭터와 카메라의 거리
 
     [Header("event")]
     public Action inventory;
@@ -38,21 +40,21 @@ public class PlayerController : MonoBehaviour
     public event Action onAttackEvent; // 공격 애니 이벤트
 
     private Rigidbody _rigidbody;
-    public BoxCollider _boxCollider;
+    public CapsuleCollider _capsuleCollider;
     public Equipment equipment;
     public PlayerAttack playerAttack;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _boxCollider = GetComponent<BoxCollider>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
         equipment = GetComponent<Equipment>();
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked; // 커서 안보이게 숨기기
-        bottomOffset = _boxCollider.bounds.extents.y; //  트랜스폼 높이의 절반
+        bottomOffset = _capsuleCollider.bounds.extents.y; //  트랜스폼 높이의 절반
     }
 
     private void FixedUpdate()
@@ -152,6 +154,7 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
         // 캐릭터 오일러각 회전
         // Rotation y에 마우스 델타 x값을 넣어줘야함 * 마우스 민감도
+        
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -226,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
         for (int i = 0; i < rays.Length; i++)
         {
-            Debug.DrawRay(rays[i].origin, rays[i].direction * 0.2f, Color.red);
+            //Debug.DrawRay(rays[i].origin, rays[i].direction * 0.2f, Color.red);
             if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
             {
                 return true;
