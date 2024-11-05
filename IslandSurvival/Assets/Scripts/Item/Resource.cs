@@ -32,11 +32,11 @@ public class Resource : MonoBehaviour
 
         if (capacity <= 0)
         {
-            ShowStump(hitPoint); // 자원에 따라 다른 프리팹 생성(광석이 추가된다면.현재는 나무 밑동)
+            ShowStump(hitPoint); // 자원에 따라 다른 프리팹 생성
             gameObject.SetActive(false); // 자원 오브젝트 비활성화
 
             // 리스폰 매니저에 자원 리스폰 요청
-            RespawnManager.Instance.StartRespawn(gameObject, 5f, transform.position, stumpInstance);
+            RespawnManager.Instance.StartRespawn(gameObject, 60f, transform.position, stumpInstance);
         }
     }
 

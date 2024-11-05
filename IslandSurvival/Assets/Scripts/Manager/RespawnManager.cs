@@ -29,7 +29,7 @@ public class RespawnManager : MonoBehaviour
         // 리스폰될 때, 흔적을 제거하고 다시 활성화
         if (remainResource != null)
         {
-            Destroy(remainResource); // 밑동, (광석) 흔적 제거
+            Destroy(remainResource); // 흔적 제거
         }
 
         // 활성화될 위치 설정
