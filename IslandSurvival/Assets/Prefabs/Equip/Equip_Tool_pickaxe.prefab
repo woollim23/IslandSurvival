@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4370274719480287530}
   - component: {fileID: 4401184399178783852}
   - component: {fileID: 1049068315448294825}
+  - component: {fileID: 5102789981599925841}
+  - component: {fileID: -7667509663571687189}
   m_Layer: 0
   m_Name: Equip_Tool_pickaxe
   m_TagString: Untagged
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8612402562266097015}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83,3 +85,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5102789981599925841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8612402562266097015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b71588098592b145b24bb37f5d276ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 0}
+--- !u!114 &-7667509663571687189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8612402562266097015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65531ef39d650ad4594af1db463bd496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doesGatherResources: 1
+  doesDealDamage: 1
+  damage: 30
+  attackRate: 2
+  attackDistance: 1
+  useAttackStamina: 25
+  doesStatIncrease: 0
+  increase: 0

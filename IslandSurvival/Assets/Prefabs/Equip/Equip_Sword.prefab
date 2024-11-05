@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4296618538950612207}
   - component: {fileID: 2323205392656270803}
   - component: {fileID: -1954839606351859013}
-  m_Layer: 0
+  - component: {fileID: 3495621786749913046}
+  m_Layer: 7
   m_Name: Equip_Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,3 +108,16 @@ MonoBehaviour:
   useAttackStamina: 15
   doesStatIncrease: 0
   increase: 0
+--- !u!114 &3495621786749913046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187976949394462792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b71588098592b145b24bb37f5d276ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: c32c986f835ad8f4f890d7e489623b77, type: 2}
