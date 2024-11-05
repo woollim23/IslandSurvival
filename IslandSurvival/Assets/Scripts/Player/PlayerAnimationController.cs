@@ -13,6 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
         CharacterManager.Instance.Player.controller.onMoveEvent += MoveAnim;
         CharacterManager.Instance.Player.controller.onJumpEvent += JumpAnim;
         CharacterManager.Instance.Player.attack.onAttackEvent += AttackAnim;
+        CharacterManager.Instance.Player.condition.onDeadEvent += DeadAnim;
 
     }
 

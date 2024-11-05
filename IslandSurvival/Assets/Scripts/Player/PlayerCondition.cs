@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCondition : MonoBehaviour, IDamagable
 {
     public UICondition uiCondition;
+    public GameObject targetCanvas;
 
     Condition health { get { return uiCondition.health; } }
     Condition stamina { get { return uiCondition.stamina; } }
@@ -15,6 +16,8 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public float healthDecay;
 
     public event Action onTakeDamage;
+    public event Action onDeadEvent;
+    public bool isDead = false;
 
     void Update()
     {
@@ -24,12 +27,12 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         stamina.Add(stamina.passiveValue * Time.deltaTime);
 
  
-        if (hunger.curValue <= 0f || thirst.curValue <= 0f || temperature.curValue <= 0f || temperature.curValue >= 60f)
+        if (hunger.curValue <= 0f || thirst.curValue <= 0f || temperature.curValue <= 0f)
         {
             health.Subtract(healthDecay * Time.deltaTime);
         }
 
-        if (health.curValue <= 0f)
+        if (health.curValue == 0f && !isDead)
         {
             Die();
         }
@@ -79,6 +82,18 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public void Die()
     {
         Debug.Log("죽었다");
+        isDead = true;
+        onDeadEvent?.Invoke();
+        CharacterManager.Instance.Player.controller.canLook = false;
+        StartCoroutine(PauseCoroutine(3));
+    }
+
+    private IEnumerator PauseCoroutine(float delay)
+    {
+        yield return new WaitForSeconds(delay); // 지정한 시간(1초) 기다림
+        Cursor.visible = true; // 커서를 화면에 보이도록 설정
+        Cursor.lockState = CursorLockMode.None; // 커서가 자유롭게 움직이도록 설정
+        targetCanvas.SetActive(true);
     }
 
     public void TakePhysicalDamage(int damage)
