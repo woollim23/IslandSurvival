@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     public event Action<Equip> onAttackAction; // 공격 이벤트
     public event Action<bool> onMoveEvent; // 이동 애니 이벤트
     public event Action onJumpEvent; // 점프 애니 이벤트
-    public event Action onAttackEvent; // 공격 애니 이벤트
 
     private Rigidbody _rigidbody;
     public CapsuleCollider _capsuleCollider;
@@ -204,7 +203,6 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed && canLook)
         {
             onAttackAction?.Invoke(equipment.curEquip);
-            onAttackEvent?.Invoke();
         }
     }
 

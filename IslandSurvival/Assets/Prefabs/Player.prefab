@@ -280,9 +280,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.22289419
-  m_Height: 0.70010614
+  m_Height: 0.5882876
   m_Direction: 1
-  m_Center: {x: -0.0009937882, y: 0.29779732, z: 0}
+  m_Center: {x: -0.0009937882, y: 0.24188805, z: 0}
 --- !u!54 &3115976685356910443
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -466,10 +466,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   condition: {fileID: 0}
+  attack: {fileID: 0}
   equip: {fileID: 0}
   animator: {fileID: 8736006786934109659}
   itemData: {fileID: 0}
-  structureData: {fileID: 0}
   dropPosition: {fileID: 7400836478674796517}
 --- !u!114 &5205965606744567354
 MonoBehaviour:

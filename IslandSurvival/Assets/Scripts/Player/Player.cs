@@ -5,13 +5,13 @@ public class Player : Singletone<Player>
 {
     public PlayerController controller;
     public PlayerCondition condition;
+    public PlayerAttack attack;
     public Equipment equip;
     public Animator animator;
 
     public ItemData itemData;
     public Action addItem;
-    public StructureData structureData;
-
+    
     public Transform dropPosition;
 
     private void Awake()
@@ -20,6 +20,7 @@ public class Player : Singletone<Player>
         CharacterManager.Instance.Player = this;
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
+        attack = GetComponent<PlayerAttack>();
         equip = GetComponent<Equipment>();
         animator = GetComponentInChildren<Animator>();
     }
