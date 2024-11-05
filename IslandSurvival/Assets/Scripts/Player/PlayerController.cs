@@ -29,19 +29,23 @@ public class PlayerController : MonoBehaviour
     private Vector2 mouseDelta; // inputsystem으로 입력 받는 마우스 델타값
     public bool canLook = true;
 
+    [Header("event")]
     public Action inventory;
     public event Action onCancelStruct;
-    public event Action<Equip> onAttackAction;
+    public event Action<Equip> onAttackAction; // 공격 이벤트
+    public event Action<bool> onMoveEvent; // 이동 애니 이벤트
+    public event Action onJumpEvent; // 점프 애니 이벤트
+    public event Action onAttackEvent; // 공격 애니 이벤트
 
     private Rigidbody _rigidbody;
-    public CapsuleCollider _capsuleCollider;
+    public BoxCollider _capsuleCollider;
     public Equipment equipment;
     public PlayerAttack playerAttack;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _capsuleCollider = GetComponent<CapsuleCollider>();
+        _capsuleCollider = GetComponent<BoxCollider>();
         equipment = GetComponent<Equipment>();
     }
 
@@ -156,10 +160,12 @@ public class PlayerController : MonoBehaviour
         {
             // 버튼 클릭하는 동안 수행
             curMovementInput = context.ReadValue<Vector2>();
+            onMoveEvent?.Invoke(true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             curMovementInput = Vector2.zero;
+            onMoveEvent?.Invoke(false);
         }
     }
 
@@ -175,7 +181,8 @@ public class PlayerController : MonoBehaviour
             if (IsGrounded())
             {
                 _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
-                //CharacterManager.Instance.Player.condition.UseStamina(jumpPower / 10);
+                CharacterManager.Instance.Player.condition.UseStamina(jumpPower / 10);
+                onJumpEvent?.Invoke();
             }
         }
     }
@@ -194,6 +201,7 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed && canLook)
         {
             onAttackAction?.Invoke(equipment.curEquip);
+            onAttackEvent?.Invoke();
         }
     }
 
@@ -206,14 +214,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         Ray[] rays = new Ray[4]
        {
-            new Ray(transform.position - new Vector3(0, bottomOffset, 0) + (transform.forward * 0.2f), Vector3.down),
-            new Ray(transform.position - new Vector3(0, bottomOffset, 0) + (-transform.forward * 0.2f), Vector3.down),
-            new Ray(transform.position - new Vector3(0, bottomOffset, 0) + (transform.right * 0.2f), Vector3.down),
-            new Ray(transform.position - new Vector3(0, bottomOffset, 0) + (-transform.right * 0.2f), Vector3.down)
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.02f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.02f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.02f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) +(transform.up * 0.02f), Vector3.down)
        };
 
         for (int i = 0; i < rays.Length; i++)
