@@ -10,7 +10,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     Condition stamina { get { return uiCondition.stamina; } }
     Condition hunger { get { return uiCondition.hunger; } }
     Condition thirst { get { return uiCondition.thirst; } }
-    Condition temperature { get { return uiCondition.temperature; } }
+    public Condition temperature { get { return uiCondition.temperature; } }
 
     public float healthDecay;
 
@@ -23,10 +23,10 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         thirst.Subtract(thirst.passiveValue * Time.deltaTime);
         stamina.Add(stamina.passiveValue * Time.deltaTime);
 
-        if (hunger.curValue <= 0f)
+ 
+        if (hunger.curValue <= 0f || thirst.curValue <= 0f || temperature.curValue <= 0f || temperature.curValue >= 60f)
         {
             health.Subtract(healthDecay * Time.deltaTime);
-            thirst.Subtract(healthDecay * Time.deltaTime);
         }
 
         if (health.curValue <= 0f)
@@ -43,6 +43,15 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public void Eat(float amount)
     {
         hunger.Add(amount);
+    }
+    public void DecreaseTemperature(float amount)
+    {
+        temperature.Subtract(amount);
+    }
+
+    public void IncreaseTemperature(float amount)
+    {
+        temperature.Add(amount);
     }
 
     public void Doping(float value, float duration)

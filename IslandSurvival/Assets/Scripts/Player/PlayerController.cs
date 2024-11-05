@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity; // 회전 민감도
     private Vector2 mouseDelta; // inputsystem으로 입력 받는 마우스 델타값
     public bool canLook = true;
-    [SerializeField]float camHeight = 2.0f;   // 카메라의 높이
-    [SerializeField] float camDistance = 4.0f; // 캐릭터와 카메라의 거리
 
     [Header("event")]
     public Action inventory;

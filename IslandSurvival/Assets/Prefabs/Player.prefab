@@ -69,7 +69,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 72.9
+  field of view: 58.1
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -492,12 +492,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   cameraContainer: {fileID: 2406495836332921384}
-  minXLook: -65
-  maxXLook: 65
+  minXLook: -30
+  maxXLook: 50
   lookSensitivity: 0.1
   canLook: 1
-  camHeight: 2
-  camDistance: 4
   _capsuleCollider: {fileID: 0}
   equipment: {fileID: 0}
   playerAttack: {fileID: 0}
@@ -514,7 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
-  healthDecay: 0
+  healthDecay: 5
 --- !u!114 &4944576394475359993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,14 +594,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7722782754105118421}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16013071, y: -0, z: -0, w: 0.9870959}
-  m_LocalPosition: {x: 0, y: 0.982, z: -0.531}
+  m_LocalRotation: {x: 0.20998147, y: 0.000000029802319, z: 0.00000002235174, w: 0.97770536}
+  m_LocalPosition: {x: 0, y: 0.953, z: -1.024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9202589849164538553}
   m_Father: {fileID: 3721560507476754724}
-  m_LocalEulerAnglesHint: {x: 18.429, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 24.243, y: 0, z: 0}
 --- !u!1 &8723262670448018451
 GameObject:
   m_ObjectHideFlags: 0

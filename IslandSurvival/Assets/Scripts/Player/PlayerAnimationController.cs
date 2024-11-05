@@ -7,8 +7,6 @@ public class PlayerAnimationController : MonoBehaviour
     private static readonly int isAttack = Animator.StringToHash("isAttack");
     private static readonly int isDead = Animator.StringToHash("isDead");
 
-    private readonly float magnituteThreshold = 0.1f;
-
 
     private void Start()
     {
