@@ -28,6 +28,9 @@ public abstract class AnimalAI : MonoBehaviour
     
     public Animator animator;
     public Animal animal;
+    private float lookAroundTimer;
+    private float lookAroundInterval = 3f;
+    private int randomLook;
 
     private void Awake()
     {
@@ -40,11 +43,31 @@ public abstract class AnimalAI : MonoBehaviour
         SetState(AIState.Wandering);
         animator = GetComponent<Animator>();
         animal = GetComponent<Animal>();
+        lookAroundTimer = lookAroundInterval;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
+        lookAroundTimer -= Time.deltaTime;
+        
+        if (lookAroundTimer <= 0)
+        {
+            randomLook = Random.Range(0, 3);
+            animator.SetFloat("idleDirection", randomLook);
+            lookAroundTimer = lookAroundInterval;
+        }
+        
+        if (Random.value < 0.1f)
+        {
+            animator.SetTrigger("Sit");
+        }
+        
+        if (Random.value < 0.05f)
+        {
+            animator.SetTrigger("Roll");
+        }
+        
         playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.transform.position);
         
         animator.SetBool("Moving", aiState != AIState.Idle);
