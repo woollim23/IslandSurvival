@@ -11,73 +11,71 @@ public enum AIState
 
 public abstract class AnimalAI : MonoBehaviour
 {
-    [Header("AI")]
-    protected NavMeshAgent agent;
+    [Header("AI")] protected NavMeshAgent agent;
     public float detecDistance;
     protected AIState aiState;
-    
-    [Header("Wandering")]
-    public float minWanderDistance;
+
+    [Header("Wandering")] public float minWanderDistance;
     public float maxWanderDistance;
     public float minWanderWaitTime;
     public float maxWanderWaitTime;
-    
+
     protected float playerDistance;
-    
+
     public float fieldOfView = 120f;
-    
+
     public Animator animator;
     public Animal animal;
-    private float lookAroundTimer;
-    private float lookAroundInterval = 3f;
-    private int randomLook;
+    private float lookDirection;
+    private Vector3 previousPosition;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
         SetState(AIState.Wandering);
         animator = GetComponent<Animator>();
         animal = GetComponent<Animal>();
-        lookAroundTimer = lookAroundInterval;
+        previousPosition = transform.position;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        lookAroundTimer -= Time.deltaTime;
-        
-        if (lookAroundTimer <= 0)
+        playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.transform.position);
+        animator.SetBool("Moving", aiState != AIState.Idle);
+        Vector3 movement = transform.position - previousPosition;
+
+        if (movement.x < -0.1f)
         {
-            randomLook = Random.Range(0, 3);
-            animator.SetFloat("idleDirection", randomLook);
-            lookAroundTimer = lookAroundInterval;
+            lookDirection = -1;
         }
+        else if (movement.x > 0.1f)
+        {
+            lookDirection = 1;
+        }
+        else
+        {
+            lookDirection = 0;
+        }
+
+        animator.SetFloat("LookDirection", lookDirection);
         
-        if (Random.value < 0.1f)
+        if (aiState == AIState.Idle && Random.value < 0.5f)
         {
             animator.SetTrigger("Sit");
         }
-        
-        if (Random.value < 0.05f)
-        {
-            animator.SetTrigger("Roll");
-        }
-        
-        playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.transform.position);
-        
-        animator.SetBool("Moving", aiState != AIState.Idle);
     }
-    
+
     public virtual void SetState(AIState state)
     {
         aiState = state;
     }
-    
+
     protected virtual void PassiveUpdate()
     {
         if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
@@ -87,11 +85,11 @@ public abstract class AnimalAI : MonoBehaviour
             //health += amount * Time.deltaTime; //heal animal's hp when far from player
         }
     }
-    
+
     void WanderToNewLocation()
     {
         if (aiState != AIState.Idle) return;
-        
+
         SetState(AIState.Wandering);
         agent.SetDestination(GetWanderLocation());
     }
@@ -99,21 +97,25 @@ public abstract class AnimalAI : MonoBehaviour
     Vector3 GetWanderLocation()
     {
         NavMeshHit hit;
-        
-        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+
+        NavMesh.SamplePosition(
+            transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit,
+            maxWanderDistance, NavMesh.AllAreas);
 
         int i = 0;
 
         while (Vector3.Distance(transform.position, hit.position) < detecDistance)
         {
-            NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)), out hit, maxWanderDistance, NavMesh.AllAreas);
+            NavMesh.SamplePosition(
+                transform.position + (Random.onUnitSphere * Random.Range(minWanderDistance, maxWanderDistance)),
+                out hit, maxWanderDistance, NavMesh.AllAreas);
             i++;
             if (i == 30) break;
         }
 
         return hit.position;
     }
-    
+
     protected bool IsPlayerInFieldOfView()
     {
         Vector3 directonToPlayer = CharacterManager.Instance.Player.transform.position - transform.position;
