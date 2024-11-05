@@ -7,9 +7,10 @@ public class UICraft : MonoBehaviour
 {
     //UIInventory 참고
 
-    public ItemSlot[] slots;
-    public GameObject CraftPanalCanvas;
-    public Transform slotPanel;
+    //public ItemSlot[] slots;
+    public GameObject CraftPanalCanvas;// 기본 베이스 UI
+    public Transform CraftSlotsPanel;
+    public Transform CraftNeedItemSlotsPanel;
     public Transform dropPosition;
 
     [Header("Select Item")]
@@ -20,15 +21,8 @@ public class UICraft : MonoBehaviour
     public GameObject craftButton;
     public GameObject cancelButton;
 
-    
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
+    public string craftName; // 이름
+    public GameObject RealStructurePrefab; // 실제 설치 될 프리팹
+    public GameObject previewStructure; // 미리 보기 프리팹
+     
 }

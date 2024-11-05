@@ -10,6 +10,7 @@ public class Player : Singletone<Player>
 
     public ItemData itemData;
     public Action addItem;
+    public StructureData structureData;
 
     public Transform dropPosition;
 
