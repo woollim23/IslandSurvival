@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 676544565bbf7234eac6e7e6c73e7dbb, type: 2}
+  sharedProfile: {fileID: 0}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -513,7 +513,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
-  targetCanvas: {fileID: 0}
+  mainCanvas: {fileID: 2239635862881600581, guid: 550ef2f4fa4fa1442b9d46bfbf4e8bec, type: 3}
+  gameOverCanvas: {fileID: 1153324437665495711, guid: d4784af31a41f754fb0b0f86054468d1, type: 3}
   healthDecay: 5
   isDead: 0
 --- !u!114 &4944576394475359993
