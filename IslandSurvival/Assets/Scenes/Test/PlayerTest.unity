@@ -2045,6 +2045,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3339979522327475962, guid: 99b650c9cd63d1a4c890ef268f11924b, type: 3}
+      propertyPath: maxVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879226867002595495, guid: 99b650c9cd63d1a4c890ef268f11924b, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 03b28d4c7405e4fa3864377a171cf308, type: 3}
     - target: {fileID: 4714473213444673461, guid: 99b650c9cd63d1a4c890ef268f11924b, type: 3}
       propertyPath: m_Name
       value: HuntMusicZone
@@ -6668,6 +6676,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 28572388849422720, guid: 16986c00e2d82e74d8b658b3ba5824c1, type: 3}
+      propertyPath: maxVolume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1356518916414599705, guid: 16986c00e2d82e74d8b658b3ba5824c1, type: 3}
       propertyPath: m_Name
       value: SnowMusicZone
@@ -6712,6 +6724,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7031579562307093143, guid: 16986c00e2d82e74d8b658b3ba5824c1, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c1b7bbc412834d24b0900b6768572e6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6944,6 +6960,10 @@ MonoBehaviour:
   constructButton: {fileID: 0}
   dropButton: {fileID: 8192966196963953429}
   cookButton: {fileID: 1366066736661840608}
+  cancelInfoTxt: {fileID: 0}
+  buildUI: {fileID: 0}
+  selectedItem: {fileID: 0}
+  selectedItemIndex: 0
 --- !u!1 &5908865724035989449
 GameObject:
   m_ObjectHideFlags: 0
@@ -7934,6 +7954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FieldMusicZone
       objectReference: {fileID: 0}
+    - target: {fileID: 2861941262072962839, guid: f06b8b4822c49914fa74177d92ffa926, type: 3}
+      propertyPath: maxVolume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2957139586563775914, guid: f06b8b4822c49914fa74177d92ffa926, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.661819
@@ -7974,6 +7998,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4763831241017937634, guid: f06b8b4822c49914fa74177d92ffa926, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b6891bf38a3df44b29d9271a7acfea03, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
