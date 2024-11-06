@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5014517787932292419}
   - component: {fileID: 5567152346034390827}
   m_Layer: 0
-  m_Name: SnowArea
+  m_Name: SnowZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

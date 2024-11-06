@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7b4d6648c67944e8e11c2aa03566fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterResource: {fileID: 8818417295009037645, guid: 5f8bfa803b9985b42b151c35d7f60dcd, type: 3}
 --- !u!1001 &1384354352956073449
 PrefabInstance:
   m_ObjectHideFlags: 0

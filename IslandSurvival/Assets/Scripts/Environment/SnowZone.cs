@@ -19,6 +19,8 @@ public class SnowZone : MonoBehaviour
         // 캐릭터인지 확인
         if (temperatureCoroutine == null) // 중복 실행 방지
         {
+            if(temperatureCoroutine != null)
+                StopCoroutine(temperatureCoroutine);
             temperatureCoroutine = StartCoroutine(DecreaseTemperature());
         }
     }
@@ -29,10 +31,8 @@ public class SnowZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if (temperatureCoroutine != null) // 코루틴이 실행 중인 경우
-            {
                 StopCoroutine(temperatureCoroutine);
-                temperatureCoroutine = StartCoroutine(IncreaseTemperature());
-            }
+            temperatureCoroutine = StartCoroutine(IncreaseTemperature());
         }
     }
 
