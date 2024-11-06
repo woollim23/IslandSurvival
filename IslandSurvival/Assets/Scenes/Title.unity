@@ -962,9 +962,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436891961}
   m_CullTransparentMesh: 1
---- !u!114 &1832760028 stripped
+--- !u!114 &1561954797 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2866167261905435330, guid: 03f4710010a77c646be1e3c036014921, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3831019975923385201, guid: 03f4710010a77c646be1e3c036014921, type: 3}
   m_PrefabInstance: {fileID: 1927043355874414937}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1124,8 +1124,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1832760028}
-        m_TargetAssemblyTypeName: SceneLoad, Assembly-CSharp
+      - m_Target: {fileID: 1561954797}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1832760028}
+      - m_Target: {fileID: 1561954797}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -1369,7 +1369,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1077108971}
+  - {fileID: 1927043355874414937}
   - {fileID: 977976735}
   - {fileID: 473347575}
   - {fileID: 1981232253}
-  - {fileID: 1927043355874414937}

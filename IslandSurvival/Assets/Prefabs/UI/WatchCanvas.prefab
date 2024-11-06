@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6884190425033253972}
   - component: {fileID: 5647351289263641045}
   - component: {fileID: 939150711858261865}
-  - component: {fileID: 1105409226334413331}
+  - component: {fileID: 5944639808761596015}
   m_Layer: 5
   m_Name: WatchCanvas
   m_TagString: Untagged
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1105409226334413331
+--- !u!114 &5944639808761596015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca1fe15f490d204ba4beda17db29021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayTime: {fileID: 3201206441683336246}
+  timerText: {fileID: 3201206441683336246}
+  liveTimeText: {fileID: 0}
 --- !u!1 &7070426705368460845
 GameObject:
   m_ObjectHideFlags: 0
