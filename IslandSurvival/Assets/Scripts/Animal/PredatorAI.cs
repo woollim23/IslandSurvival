@@ -5,8 +5,7 @@ using UnityEngine.AI;
 
 public class PredatorAI : AnimalAI
 {
-    [Header("Combat")]
-    public int damage;
+    [Header("Combat")] public int damage;
     public float attackRate;
     public float lastAttackTime;
     public float attackDistance;
@@ -22,10 +21,11 @@ public class PredatorAI : AnimalAI
                 break;
         }
     }
+
     public override void SetState(AIState state)
     {
         base.SetState(state);
-        
+
         switch (aistate)
         {
             case AIState.Attacking:
@@ -33,10 +33,10 @@ public class PredatorAI : AnimalAI
                 break;
         }
     }
-    
+
     protected override void PassiveUpdate()
     {
-       base.PassiveUpdate();
+        base.PassiveUpdate();
 
         if (playerDistance < detecDistance)
         {
