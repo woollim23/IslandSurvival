@@ -1,24 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Timeline.Actions.MenuPriority;
-using UnityEngine.InputSystem.XR;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using static UnityEngine.Rendering.PostProcessing.SubpixelMorphologicalAntialiasing;
 using static UnityEditor.Progress;
+
 
 public class UICraft : MonoBehaviour
 {
     public ItemData item;
+    public UIInventory inventory;
     public CraftSlot craftItemSlots;
     public CraftSlot[] craftSlots;
-    public HaveItemSlot[] haveItemSlot;
+    public HaveItemSlot[] haveItemSlots;
 
     public GameObject CraftPanalCanvas;// 기본 베이스 UI
     public Transform CraftSlotsPanel;
     public Transform CraftNeedItemSlotsPanel;
-    public Transform dropPosition;
 
     [Header("Select Item")]
     public TextMeshProUGUI selectedStructureName;
@@ -38,16 +33,30 @@ public class UICraft : MonoBehaviour
     //TODO : 인벤토리에 넣어주기 // 일단 필드에 드랍됨
     //TODO : 인벤토리에서 가져오기
 
+    private void Awake()
+    {
+        //item = inventory.slot.item; //인벤토리와 같은 아이템데이터SO를 넣어줌
+    }
     private void Start()
-    {  
+    {
+        CraftPanalCanvas.SetActive(false);
+
         craftSlots = new CraftSlot[CraftSlotsPanel.childCount];
         for (int i = 0; i < craftSlots.Length; i++)
         {
             craftSlots[i] = CraftSlotsPanel.GetChild(i).GetComponent<CraftSlot>();
             craftSlots[i].index = i;
-            craftSlots[i].craftInventory = this;            
+            craftSlots[i].craftInventory = this;
         }
-        ClearSelectedItemWindow();        
+
+        //haveItemSlots = new HaveItemSlot[CraftSlotsPanel.childCount];
+        //for (int i = 0; i < haveItemSlots.Length; i++)
+        //{
+        //    haveItemSlots[i] = CraftSlotsPanel.GetChild(i).GetComponent<HaveItemSlot>();
+        //    // haveItemSlots[i].index = i;
+        //    //haveItemSlots[i].craftInventory = this;
+        //}
+        ClearSelectedItemWindow();
     }
 
     void ClearSelectedItemWindow()
@@ -83,9 +92,17 @@ public class UICraft : MonoBehaviour
         {
             selectedNeedItemName.text += selectedItem.constructables[i].type.ToString() + "\n";
             selectedNeedItemValue.text += selectedItem.constructables[i].Needvalue.ToString() + "\n";
-        }
+        }        
+    }
 
-        craftButton.SetActive(selectedItem.type == ItemType.Constructable);
+    public void GetInventoryItem()
+    {
+        for (int i = 0; i < haveItemSlots.Length; i++)
+        {
+            haveItemSlots[i].item = inventory.slots[i].item;
+            haveItemSlots[i].icon = inventory.slots[i].icon;
+            haveItemSlots[i].quatityText.text = inventory.slots[i].quatityText.text;
+        }
     }
 
     public void UpdateCraftUI()
@@ -101,19 +118,19 @@ public class UICraft : MonoBehaviour
             }
         }
 
-        if (item.type == ItemType.Resource)
+        if (inventory.slot.item.type == ItemType.Resource)
         {
-            for (int i = 0; i < haveItemSlot.Length; i++)
+            for (int i = 0; i < haveItemSlots.Length; i++)
             {
-                if (haveItemSlot[i].item != null)
+                if (haveItemSlots[i].item != null)
                 {
-                    haveItemSlot[i].Set();
+                    GetInventoryItem();
                 }
                 else
                 {
-                    haveItemSlot[i].item = null;
+                    haveItemSlots[i].item = null;
                 }
-            
+
             }
         }
     }

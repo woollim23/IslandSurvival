@@ -17,7 +17,7 @@ public enum ConsumableType
     Thirst,
     Doping
 }
-public enum Constructable
+public enum ConstructableType
 {
     Log,
     Stone
@@ -26,7 +26,7 @@ public enum Constructable
 [Serializable]
 public class ItemDataConstructable
 {
-    public Constructable type;
+    public ConstructableType type;
     public float Needvalue;
     public float setDuration;
 }
@@ -63,5 +63,6 @@ public class ItemData : ScriptableObject
     public ItemDataConstructable[] constructables;
 
     [Header("Structure")]
+    public GameObject previewStructurePrefab;
     public GameObject structurePrefab;
 }
