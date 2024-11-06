@@ -1699,7 +1699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1827019523396104854}
         m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
         m_MethodName: OnCookButton
         m_Mode: 1
