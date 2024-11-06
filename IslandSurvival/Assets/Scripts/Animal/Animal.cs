@@ -14,11 +14,17 @@ public class Animal : MonoBehaviour, IDamagable
     public float walkSpeed;
     public float runSpeed;
     public ItemData[] dropOnDeath;
-    
+    Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void TakePhysicalDamage(int damage)
     {
         health -= damage;
-        AnimalAI.animator.SetTrigger("Hit");
+        animator.SetTrigger("Hit");
         if (health <= 0)
         {
             Die();
@@ -33,8 +39,7 @@ public class Animal : MonoBehaviour, IDamagable
         {
             Instantiate(dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, quaternion.identity);
         }
-        
-        AnimalAI.animator.SetTrigger("Death");
+        animator.SetTrigger("Death");
         Destroy(gameObject);
     }
 

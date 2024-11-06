@@ -49,7 +49,8 @@ public abstract class AnimalAI : MonoBehaviour
     protected virtual void Update()
     {
         playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.Player.transform.position);
-        animator.SetBool("Moving", aistate != AIState.Idle);
+        if(animator != null)
+            animator.SetBool("Moving", aistate != AIState.Idle);
         Vector3 movement = transform.position - previousPosition;
         
         if (movement.x < -0.1f)
@@ -64,8 +65,8 @@ public abstract class AnimalAI : MonoBehaviour
         {
             lookDirection = 0;
         }
-        
-        animator.SetFloat("lookDirection", lookDirection);
+        if (animator != null)
+            animator.SetFloat("lookDirection", lookDirection);
         
         switch (aistate)
         {
