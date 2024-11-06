@@ -1970,11 +1970,11 @@ MonoBehaviour:
   inventory: {fileID: 0}
   craftSlots:
   - {fileID: 5704082513556494034}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2122090153629699113}
+  - {fileID: 4453613921830885373}
+  - {fileID: 5986275114288141186}
+  - {fileID: 8261350461670853225}
+  - {fileID: 5105953669898098416}
   haveItemSlots:
   - {fileID: 8798690165976702758}
   - {fileID: 5972345286003759289}

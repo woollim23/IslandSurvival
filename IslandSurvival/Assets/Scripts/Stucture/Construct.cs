@@ -50,7 +50,7 @@ public class Construct : MonoBehaviour
         {
             PreviewPositionUpdate();
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (isConstructMode && Input.GetButtonDown("Fire1"))
         {
             cancelInfoTxt.SetActive(false);
             Invoke("Build()", needDuration); // NeedDuration 후 건설
@@ -116,6 +116,7 @@ public class Construct : MonoBehaviour
     /// </summary>
     private void Build() 
     {
+        isConstructMode = true;
         if (previewStructure && previewStructure.GetComponent<PreviewObject>().isBuildable()) //빌드가 가능 하다면
         {
             Instantiate(structurePrefab, hitInfo.point, Quaternion.identity);
