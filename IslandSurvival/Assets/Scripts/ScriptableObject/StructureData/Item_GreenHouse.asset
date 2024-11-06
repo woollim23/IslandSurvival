@@ -25,9 +25,8 @@ MonoBehaviour:
   constructables:
   - type: 0
     Needvalue: 5
-    setDuration: 0
   - type: 1
     Needvalue: 5
-    setDuration: 0
   previewStructure: {fileID: 411276931436218006, guid: 7ff8806d7b30d3247a55e08c5f86b01f, type: 3}
   RealStructurePrefab: {fileID: 3669679420941973101, guid: 057c676da15613a468383079950e275e, type: 3}
+  setDuration: 5
