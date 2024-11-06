@@ -16,7 +16,7 @@ MonoBehaviour:
   description: "\uBC30\uACE0\uD514+40,  \uCCB4\uB825+10, \uC2A4\uD14C\uBBF8\uB098+10
     \uD68C\uBCF5 \uD569\uB2C8\uB2E4"
   type: 0
-  icon: {fileID: 21300000, guid: fd9ac35bdac45d444832899a04ba058e, type: 3}
+  icon: {fileID: 21300000, guid: 9eebc9341ee55b5449b4feff815a4520, type: 3}
   dropPrefab: {fileID: 1239010626601046448, guid: 057b760c5d434254e9b9482fd4fd4e06, type: 3}
   canStack: 1
   maxStackAmount: 12
@@ -31,3 +31,6 @@ MonoBehaviour:
     value: 10
     duration: 0
   equipPrefab: {fileID: 0}
+  constructables: []
+  previewStructurePrefab: {fileID: 0}
+  structurePrefab: {fileID: 0}
