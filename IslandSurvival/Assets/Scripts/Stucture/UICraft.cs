@@ -59,7 +59,7 @@ public class UICraft : MonoBehaviour
     private void Update()
     {
         UpdateCraft();
-        UpdateCraftUI();
+        //UpdateCraftUI();
     }
 
     void ClearSelectedItemWindow()
@@ -70,8 +70,7 @@ public class UICraft : MonoBehaviour
         selectedStructureDescription.text = string.Empty;
         selectedNeedItemName.text = string.Empty;
         selectedNeedItemValue.text = string.Empty;
-
-        Cursor.lockState = CursorLockMode.None;
+        
         craftButton.SetActive(true);
         cancelButton.SetActive(true);
     }
@@ -110,28 +109,30 @@ public class UICraft : MonoBehaviour
             }            
         }
     }
-    public void UpdateCraftUI()
-    {
-        for (int i = 0; i < inventory.slots.Length; i++)
-        {
-            if (inventory.slots[i].item != null && inventory.slots[i].item.type == ItemType.Resource)
-            {
-                for (int j = 0; j < haveItemSlots.Length; j++)
-                { 
-                    if (haveItemSlots[j].item == null)
-                    {
-                        haveItemSlots[j].item = inventory.slots[i].item;
-                        haveItemSlots[j].icon.sprite = inventory.slots[i].icon.sprite;
-                        haveItemSlots[j].quatityText.text = inventory.slots[i].quatityText.text;
-                    }
-                    else
-                    {
-                        haveItemSlots[j].item = null;
-                    }                
-                }
-            }
-        }
-    }
+    //public void UpdateCraftUI()
+    //{
+    //    if(inventory.slots == null)
+    //        return;
+    //    for (int i = 0; i < inventory.slots.Length; i++)
+    //    {
+    //        if (inventory.slots[i].item != null && inventory.slots[i].item.type == ItemType.Resource)
+    //        {
+    //            for (int j = 0; j < haveItemSlots.Length; j++)
+    //            { 
+    //                if (haveItemSlots[j].item == null)
+    //                {
+    //                    haveItemSlots[j].item = inventory.slots[i].item;
+    //                    haveItemSlots[j].icon.sprite = inventory.slots[i].icon.sprite;
+    //                    haveItemSlots[j].quatityText.text = inventory.slots[i].quatityText.text;
+    //                }
+    //                else
+    //                {
+    //                    haveItemSlots[j].item = null;
+    //                }                
+    //            }
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// 크래프트캔버스 내 제작하기버튼
