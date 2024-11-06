@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665156363521270920}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: leg.B.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3312265793287070351}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: tail.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4648586604863816029}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: leg.F.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4511543620559488186}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: leg.B.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5318514971194115185}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2018856513037859555}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: tail.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 6470301375090389518}
   - component: {fileID: 4116261465809862762}
   - component: {fileID: 609309848064711830}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Gecko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detecDistance: 8
+  safeDistance: 0
   minWanderDistance: 2
   maxWanderDistance: 5
   minWanderWaitTime: 3
@@ -335,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3954613407502323117}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6854648441425944873}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3600655155652009356}
   - component: {fileID: 5065039954883867539}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8559198514794725598}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: leg.F.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}

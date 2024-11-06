@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4319575402944089572}
   - component: {fileID: 4050172930965495553}
   - component: {fileID: 5185378120424541338}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detecDistance: 5
+  safeDistance: 0
   minWanderDistance: 3
   maxWanderDistance: 6
   minWanderWaitTime: 4
@@ -147,7 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2590216833267014796}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5758724369314135403}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5174232980871714513}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: tail.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 421570268239621822}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: fin.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7247901697708728915}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6983271934360071790}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: fin.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5355888445965163356}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: fin.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1730073229690794985}
   - component: {fileID: 1399878095743929232}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6930397820391159212}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: fin.03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +499,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7664621171179456500}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: tail.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6809336022097441406}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: fin.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
