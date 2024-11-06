@@ -7,14 +7,13 @@ public class PlayerAnimationController : MonoBehaviour
     private static readonly int isAttack = Animator.StringToHash("isAttack");
     private static readonly int isDead = Animator.StringToHash("isDead");
 
-    private readonly float magnituteThreshold = 0.1f;
-
 
     private void Start()
     {
         CharacterManager.Instance.Player.controller.onMoveEvent += MoveAnim;
         CharacterManager.Instance.Player.controller.onJumpEvent += JumpAnim;
         CharacterManager.Instance.Player.attack.onAttackEvent += AttackAnim;
+        CharacterManager.Instance.Player.condition.onDeadEvent += DeadAnim;
 
     }
 
