@@ -513,8 +513,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
-  mainCanvas: {fileID: 2239635862881600581, guid: 550ef2f4fa4fa1442b9d46bfbf4e8bec, type: 3}
-  gameOverCanvas: {fileID: 1153324437665495711, guid: d4784af31a41f754fb0b0f86054468d1, type: 3}
+  mainCanvas: {fileID: 0}
+  gameOverCanvas: {fileID: 0}
   healthDecay: 5
   isDead: 0
 --- !u!114 &4944576394475359993
