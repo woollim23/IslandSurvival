@@ -50,10 +50,12 @@ public class Construct : MonoBehaviour
         {
             PreviewPositionUpdate();
         }
-        if (isConstructMode && Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire2"))
         {
             cancelInfoTxt.SetActive(false);
-            Invoke("Build()", needDuration); // NeedDuration 후 건설
+            Build();
+            //buildUI.SetActive(true);
+            //Invoke("Build()", needDuration); // NeedDuration 후 건설
         }       
     }
 
@@ -116,7 +118,7 @@ public class Construct : MonoBehaviour
     /// </summary>
     private void Build() 
     {
-        isConstructMode = true;
+        //isConstructMode = true;
         if (previewStructure && previewStructure.GetComponent<PreviewObject>().isBuildable()) //빌드가 가능 하다면
         {
             Instantiate(structurePrefab, hitInfo.point, Quaternion.identity);
@@ -128,7 +130,7 @@ public class Construct : MonoBehaviour
 
     private void BuildUISet()
     {
-        buildUIImage.fillAmount = defaltDuration/needDuration;
+        //buildUIImage.fillAmount = defaltDuration/needDuration;
         defaltDuration += Time.deltaTime;
     }    
 
@@ -152,7 +154,7 @@ public class Construct : MonoBehaviour
         ResetPreview();
         craftPanalCanvas.SetActive(false);
         cancelInfoTxt.SetActive(false);
-        buildUI.SetActive(false);
+        //buildUI.SetActive(false);
     }
 
     private void ResetPreview()

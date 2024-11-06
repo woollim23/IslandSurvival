@@ -6944,6 +6944,10 @@ MonoBehaviour:
   constructButton: {fileID: 0}
   dropButton: {fileID: 8192966196963953429}
   cookButton: {fileID: 1366066736661840608}
+  cancelInfoTxt: {fileID: 0}
+  buildUI: {fileID: 0}
+  selectedItem: {fileID: 0}
+  selectedItemIndex: 0
 --- !u!1 &5908865724035989449
 GameObject:
   m_ObjectHideFlags: 0
