@@ -46,6 +46,11 @@ public abstract class AnimalAI : MonoBehaviour
         previousPosition = transform.position;
     }
 
+    private void Start()
+    {
+        aistate = AIState.Wandering;
+    }
+
     protected virtual void Update()
     {
         playerDistance = Vector3.Distance(transform.position, CharacterManager.Instance.Player.transform.position);

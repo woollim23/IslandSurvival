@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -6,15 +7,16 @@ using Random = UnityEngine.Random;
 public class Construct : MonoBehaviour
 {
     bool isConstructMode;//건축중인지 체크
+    ItemData data;
 
     public PlayerController controller;
     public Transform dropPosition;
-    
+
     public GameObject inventoryWindow;
     public GameObject craftPanalCanvas;// 기본 베이스 UI
     public GameObject cancelInfoTxt;
-    private GameObject buildUI;
-    private Image buildUIImage;
+    public GameObject buildUI;
+    public Image buildUIImage;
 
     public UICraft craftInventory;
     public UIInventory inventory;
@@ -33,8 +35,8 @@ public class Construct : MonoBehaviour
     [SerializeField]
     private float range;
     private float needItemIndex;
-    private float needDuration;
-    private float defaltDuration;
+    private float needDuration = 5f;
+    private float curDuration = 0f;
     private ItemData selectedItem;
 
     private void Start()
@@ -42,6 +44,7 @@ public class Construct : MonoBehaviour
         controller = CharacterManager.Instance.Player.controller;
         dropPosition = CharacterManager.Instance.Player.dropPosition;
         CharacterManager.Instance.Player.controller.onCancelStruct += CancelStruct; // 취소 이벤트 등록
+        //needDuration = data.setDuration;
     }
 
     void Update()
@@ -53,28 +56,29 @@ public class Construct : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
         {
             cancelInfoTxt.SetActive(false);
-            Build();
-            //buildUI.SetActive(true);
-            //Invoke("Build()", needDuration); // NeedDuration 후 건설
-        }       
+
+            buildUI.SetActive(true);
+            BuildUISet();
+            StartCoroutine("Build");            
+        }
     }
 
     /// <summary>
     /// Inventory내에 제작버튼
     /// </summary>
     public void OnCraftButton()
-    {        
+    {
         craftPanalCanvas.SetActive(true);
-        inventoryWindow.SetActive(false);        
+        inventoryWindow.SetActive(false);
     }
 
     /// <summary>
     /// 크래프트캔버스 취소하기버튼
     /// </summary>
     public void OnCancleButton()
-    {        
+    {
         craftPanalCanvas.SetActive(false);
-        inventoryWindow.SetActive(true);        
+        inventoryWindow.SetActive(true);
     }
     /// <summary>
     /// 인벤토리 건설하기버튼
@@ -85,9 +89,9 @@ public class Construct : MonoBehaviour
 
         SelectStructure(inventory.selectedItem); //선택건축물세팅
         inventoryWindow.SetActive(false);
-        cancelInfoTxt.SetActive(true);        
+        cancelInfoTxt.SetActive(true);
     }
-    
+
     /// <summary>
     /// 선택건축물 데이터를 담고있는 프리뷰,건축물 세팅 메소드
     /// </summary>    
@@ -102,7 +106,7 @@ public class Construct : MonoBehaviour
     /// </summary>
     private void PreviewPositionUpdate()
     {
-        Debug.DrawRay(playerTransform.position, transform.forward*range, Color.red);
+        Debug.DrawRay(playerTransform.position, transform.forward * range, Color.red);
 
         if (Physics.Raycast(playerTransform.position, playerTransform.forward, out hitInfo, range, layerMask))
         {
@@ -113,34 +117,47 @@ public class Construct : MonoBehaviour
             }
         }
     }
+
     /// <summary>
-    /// 왼쪽 마우스 클릭시 건설실행 (Duration값 만큼 Invoke 딜레이) 
+    /// 왼쪽 마우스 클릭시 건설실행 (Duration값 만큼 딜레이) 
     /// </summary>
-    private void Build() 
+    public IEnumerator Build()
     {
-        //isConstructMode = true;
+        yield return new WaitForSeconds(needDuration);
+
         if (previewStructure && previewStructure.GetComponent<PreviewObject>().isBuildable()) //빌드가 가능 하다면
         {
             Instantiate(structurePrefab, hitInfo.point, Quaternion.identity);
             Destroy(previewStructure);
             ResetPreview();
         }
-        BuildUISet();
+        buildUI.SetActive(false);
     }
 
     private void BuildUISet()
-    {
-        //buildUIImage.fillAmount = defaltDuration/needDuration;
-        defaltDuration += Time.deltaTime;
-    }    
+    {       
+        buildUIImage.fillAmount = curDuration / needDuration;
+        
+        if(curDuration >= needDuration)
+            return;
+
+        if (curDuration < needDuration)
+        {
+            curDuration += Time.deltaTime;
+
+            if (curDuration >= needDuration)
+            {
+                curDuration = needDuration;
+            }
+        }
+    }
 
     /// <summary>
     /// 아이템을 소비해 건물을 지을때 사용
     /// </summary>    
-    public void UseResource(float NeedValue, float duration)
+    public void UseResource(float NeedValue)
     {
-         needItemIndex = NeedValue;
-         needDuration = duration;           
+        needItemIndex = NeedValue;
     }
 
     /// <summary>
@@ -154,11 +171,11 @@ public class Construct : MonoBehaviour
         ResetPreview();
         craftPanalCanvas.SetActive(false);
         cancelInfoTxt.SetActive(false);
-        //buildUI.SetActive(false);
+        buildUI.SetActive(false);
     }
 
     private void ResetPreview()
-    {                
+    {
         previewStructure = null;
         structurePrefab = null;
     }

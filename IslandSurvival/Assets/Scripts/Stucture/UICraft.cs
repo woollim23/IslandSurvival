@@ -32,7 +32,7 @@ public class UICraft : MonoBehaviour
     public int selectedItemIndex = 0;
 
 
-    //TODO : 인벤토리에 넣어주기 // 일단 필드에 드랍됨
+    //TODO : 필드에 드랍됨
     //TODO : 인벤토리에서 가져오기
     
     private void Start()
@@ -104,35 +104,37 @@ public class UICraft : MonoBehaviour
         for (int i = 0; i < craftSlots.Length; i++)
         {
             if (craftSlots[i].item != null)
-            {                   
+            {
                 craftSlots[i].Set();
-            }            
+            }
+            else
+            {
+                craftSlots[i].Clear();
+            }
         }
     }
-    //public void UpdateCraftUI()
-    //{
-    //    if(inventory.slots == null)
-    //        return;
-    //    for (int i = 0; i < inventory.slots.Length; i++)
-    //    {
-    //        if (inventory.slots[i].item != null && inventory.slots[i].item.type == ItemType.Resource)
-    //        {
-    //            for (int j = 0; j < haveItemSlots.Length; j++)
-    //            { 
-    //                if (haveItemSlots[j].item == null)
-    //                {
-    //                    haveItemSlots[j].item = inventory.slots[i].item;
-    //                    haveItemSlots[j].icon.sprite = inventory.slots[i].icon.sprite;
-    //                    haveItemSlots[j].quatityText.text = inventory.slots[i].quatityText.text;
-    //                }
-    //                else
-    //                {
-    //                    haveItemSlots[j].item = null;
-    //                }                
-    //            }
-    //        }
-    //    }
-    //}
+    public void UpdateCraftUI()
+    {
+        for (int i = 0; i < inventory.slots.Length; i++)
+        {                   
+            if (inventory.slots[i].item != null && inventory.slots[i].item.type == ItemType.Resource)
+            {
+                for (int j = 0; j < haveItemSlots.Length; j++)
+                {
+                    if (haveItemSlots[j].item == null)
+                    {
+                        haveItemSlots[j].item = inventory.slots[i].item;
+                        haveItemSlots[j].icon.sprite = inventory.slots[i].icon.sprite;
+                        haveItemSlots[j].quatityText.text = inventory.slots[i].quatityText.text;
+                    }
+                    else
+                    {
+                        haveItemSlots[j].item = null;
+                    }
+                }
+            }
+        }
+    }
 
     /// <summary>
     /// 크래프트캔버스 내 제작하기버튼
@@ -151,7 +153,5 @@ public class UICraft : MonoBehaviour
     void DropStructure(ItemData data)
     {
         Instantiate(data.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
-    }
-    //TODO : 크래프트인벤에서 사용아이템삭제
-    //TODO : 인벤에서 건축아이템삭제        
+    }         
 }

@@ -27,9 +27,7 @@ public class CraftSlot : MonoBehaviour
     }
 
     public void Set()
-    {
-        // TODO : 아이콘 배열하기
-
+    {        
         icon.sprite = item.icon;   
 
         if (outline != null)
@@ -37,7 +35,11 @@ public class CraftSlot : MonoBehaviour
             outline.enabled = equipped;
         }
     }
-    
+    public void Clear()
+    {
+        item = null;
+    }
+
 
     public void OnClickCraftButton()
     {

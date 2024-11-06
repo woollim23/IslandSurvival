@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa12c0221bc849840a25fd312f289329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9e7545db0cf98464c91ddb4b0fe1d8e4, type: 2}
+  item: {fileID: 11400000, guid: 56ec6f868561c134b96a91003b239514, type: 2}
   inventory: {fileID: 0}
   craftInventory: {fileID: 5057213433892918897}
   button: {fileID: 6282208834154510742}
@@ -4193,7 +4193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa12c0221bc849840a25fd312f289329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9e7545db0cf98464c91ddb4b0fe1d8e4, type: 2}
+  item: {fileID: 0}
   inventory: {fileID: 0}
   craftInventory: {fileID: 5057213433892918897}
   button: {fileID: 2931160299656925364}
@@ -4362,7 +4362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa12c0221bc849840a25fd312f289329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9e7545db0cf98464c91ddb4b0fe1d8e4, type: 2}
+  item: {fileID: 0}
   inventory: {fileID: 0}
   craftInventory: {fileID: 5057213433892918897}
   button: {fileID: 2939119398688820183}
@@ -4908,7 +4908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa12c0221bc849840a25fd312f289329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 9e7545db0cf98464c91ddb4b0fe1d8e4, type: 2}
+  item: {fileID: 11400000, guid: 3dae88d4b90209042a49b31c3ff85798, type: 2}
   inventory: {fileID: 0}
   craftInventory: {fileID: 5057213433892918897}
   button: {fileID: 1916253037818666670}
