@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8487496260431396084}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: leg.B.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7451188103886781486}
   - component: {fileID: 8823785069875312691}
   - component: {fileID: 1184435723713642732}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Deer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detecDistance: 20
+  safeDistance: 0
   minWanderDistance: 8
   maxWanderDistance: 12
   minWanderWaitTime: 3
@@ -179,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1474708230986235472}
   - component: {fileID: 6080726640498423363}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3935450638765222481}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: tail.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +304,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5967845143696581693}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6426971945404479648}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: leg.B.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7792918645943160356}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: leg.F.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +398,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4049723303514127317}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: ear.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,7 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 616973896236897702}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: leg.F.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5423400748659004146}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1175776989829560637}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: ear.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7244033128504003550}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}

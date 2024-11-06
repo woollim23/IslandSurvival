@@ -1,22 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PreyAI : AnimalAI
 {
-    float fleeDistance;
-    
     protected override void Update()
     {
         base.Update();
-        
-        switch (aiState)
+
+        switch (_aistate)
         {
-            case AIState.Idle:
-            case AIState.Wandering:
-                PassiveUpdate();
-                break;
-            case AIState.Runaway:
-                RunawayUpdate();
+            case AIState.Fleeing:
+                FleeingUpdate();
                 break;
         }
     }
@@ -24,16 +20,13 @@ public class PreyAI : AnimalAI
     public override void SetState(AIState state)
     {
         base.SetState(state);
-
-        switch (aiState)
+        
+        switch (_aistate)
         {
-            case AIState.Runaway:
-                agent.speed = animal.runSpeed;
-                agent.isStopped = false;
+            case AIState.Fleeing:
+                agent.speed = _animal.runSpeed;
                 break;
         }
-        
-        animator.speed = agent.speed / animal.walkSpeed;
     }
     
     protected override void PassiveUpdate()
@@ -42,18 +35,43 @@ public class PreyAI : AnimalAI
 
         if (playerDistance < detecDistance)
         {
-            SetState(AIState.Runaway);
+            SetState(AIState.Fleeing);
         }
     }
     
-    void RunawayUpdate()
+    void FleeingUpdate()
     {
-        Vector3 directionAwayFromPlayer = transform.position - CharacterManager.Instance.Player.transform.position;
-        Vector3 runPosition = transform.position + directionAwayFromPlayer.normalized * fleeDistance;
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(runPosition, out hit, 5.0f, NavMesh.AllAreas))
+        if(agent.remainingDistance < 0.1f)
         {
-            agent.SetDestination(hit.position);
+            agent.SetDestination(GetFleeLocation());
         }
+        else
+        {
+            SetState(AIState.Wandering);
+        }
+    }
+    
+    Vector3 GetFleeLocation()
+    {
+        NavMeshHit hit;
+
+        NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * safeDistance), out hit, maxWanderDistance, NavMesh.AllAreas);
+
+        int i = 0;
+        while (GetDestinationAngle(hit.position) > 90 || playerDistance < safeDistance)
+        {
+
+            NavMesh.SamplePosition(transform.position + (Random.onUnitSphere * safeDistance), out hit, maxWanderDistance, NavMesh.AllAreas);
+            i++;
+            if (i == 30)
+                break;
+        }
+
+        return hit.position;
+    }
+    
+    float GetDestinationAngle(Vector3 targetPos)
+    {
+        return Vector3.Angle(transform.position - CharacterManager.Instance.Player.transform.position, transform.position + targetPos);
     }
 }
