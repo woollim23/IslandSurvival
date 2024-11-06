@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.PostProcessing.SubpixelMorphologicalAntialiasing;
 
 public class CraftSlot : MonoBehaviour
 {
@@ -29,11 +30,8 @@ public class CraftSlot : MonoBehaviour
     public void Set()
     {
         // TODO : 아이콘 배열하기
-        for (int i = 0; i < craftSlots.Length; i++)
-        {
-            craftSlots[i].item = item;
-            craftSlots[i].icon = icon;            
-        }
+        icon.gameObject.SetActive(true);
+        icon.sprite = item.icon;        
 
         if (outline != null)
         {
@@ -42,7 +40,7 @@ public class CraftSlot : MonoBehaviour
     }
     
 
-    public void OnClickButton()
+    public void OnClickCraftButton()
     {
         craftInventory.SelectCraftItem(index);
     }

@@ -24,6 +24,7 @@ public class UIInventory : MonoBehaviour
 
     private PlayerController controller;
     private PlayerCondition condition;
+    private Construct construct;
 
     ItemData selectedItem;
     int selectedItemIndex = 0;
@@ -94,7 +95,7 @@ public class UIInventory : MonoBehaviour
 
     public void AddItem()
     {
-        ItemData data = CharacterManager.Instance.Player.itemData;        
+        ItemData data = CharacterManager.Instance.Player.itemData;
 
         // 현재 슬롯에 아이템이 스택 가능한지
         if (data.canStack)
@@ -104,7 +105,7 @@ public class UIInventory : MonoBehaviour
             {
                 slot.quantity++;
                 UpdateUI();
-                CharacterManager.Instance.Player.itemData = null;                
+                CharacterManager.Instance.Player.itemData = null;
                 return;
             }
         }
@@ -119,7 +120,7 @@ public class UIInventory : MonoBehaviour
             emptySlot.item = data;
             emptySlot.quantity = 1;
             UpdateUI();
-            CharacterManager.Instance.Player.itemData = null;            
+            CharacterManager.Instance.Player.itemData = null;
             return;
         }
 
@@ -281,5 +282,48 @@ public class UIInventory : MonoBehaviour
     public void OnUnEquipButton()
     {
         UnEquip(selectedItemIndex);
+    }
+
+    public void OnCraftButton() //제작하기
+    {
+
+        if (selectedItem.type == ItemType.Resource)
+        {
+            for (int i = 0; i < selectedItem.constructables.Length; i++)
+            {
+                switch (selectedItem.constructables[i].type)
+                {
+                    case ConstructableType.Log:
+                        construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
+                        break;
+                    case ConstructableType.Stone:
+                        construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
+                        break;
+                }
+            }
+            RemoveSelectedItem();            
+        }
+    }
+
+    public void OnConstructButton() //건설하기
+    {
+        inventoryWindow.SetActive(false);
+
+        if (selectedItem.type == ItemType.Constructable)
+        {
+            for (int i = 0; i < selectedItem.constructables.Length; i++)
+            {
+                switch (selectedItem.constructables[i].type)
+                {
+                    case ConstructableType.Log:
+                        construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
+                        break;
+                    case ConstructableType.Stone:
+                        construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
+                        break;
+                }
+            }
+            RemoveSelectedItem();
+        }
     }
 }
