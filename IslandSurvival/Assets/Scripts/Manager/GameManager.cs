@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singletone<GameManager>
-{
+{    public bool gameOver;
+
     public void StartGame()
     {
         LoadGameScene();
@@ -10,24 +13,28 @@ public class GameManager : Singletone<GameManager>
 
     public void ExitGame()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-        #endif
+#endif
     }
 
     public void LoadGameScene()
     {
         SceneManager.LoadSceneAsync("MainGame");
-        CharacterManager.Instance.Player.condition.isDead = false;
-        CharacterManager.Instance.Player.controller.canLook = true;
-        CharacterManager.Instance.Player.controller.isInputBlocked = false;
+
+        if (CharacterManager.Instance.Player != null)
+        {
+            CharacterManager.Instance.Player.condition.isDead = false;
+            CharacterManager.Instance.Player.controller.canLook = true;
+            CharacterManager.Instance.Player.controller.isInputBlocked = false;
+        }
+        gameOver = false;
     }
 
     public void LoadTitleScene()
     {
         SceneManager.LoadSceneAsync("Title");
     }
-
 }

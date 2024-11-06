@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using TMPro;
 using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -21,6 +22,11 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public event Action onTakeDamage;
     public event Action onDeadEvent;
     public bool isDead = false;
+
+    private void Start()
+    {
+        mainCanvas.gameObject.SetActive(true);
+    }
 
     void Update()
     {
@@ -100,6 +106,8 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         onDeadEvent?.Invoke();
         CharacterManager.Instance.Player.controller.canLook = false;
         CharacterManager.Instance.Player.controller.isInputBlocked = true;
+
+        GameManager.Instance.gameOver = true;
 
         mainCanvas.gameObject.SetActive(false);
         gameOverCanvas.SetActive(true);
