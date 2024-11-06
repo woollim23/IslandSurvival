@@ -3,11 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singletone<GameManager>
 {
-    bool isGameOver = false;
-    bool isPaused = false;
     public void StartGame()
     {
-        isGameOver = false;
         LoadGameScene();
     }
 
