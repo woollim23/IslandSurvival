@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6298533611318972618}
   - component: {fileID: 1316901884801295304}
   - component: {fileID: 7453634108846537823}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: PreviewStructureParasol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 5903663398781510259}
   - component: {fileID: 2864650470380182008}
   - component: {fileID: 9030269578010188021}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Parasol
   m_TagString: Untagged
   m_Icon: {fileID: 0}

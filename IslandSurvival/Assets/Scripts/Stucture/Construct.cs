@@ -39,6 +39,8 @@ public class Construct : MonoBehaviour
     private LayerMask layerMask;
     [SerializeField]
     private float range;
+    private float NeedItemIndex;
+    private float NeedDuration;
 
     //제작가능 아이템 : ItemType.Resource
     //건설가능 아이템 : ItemType.Constructable
@@ -51,22 +53,16 @@ public class Construct : MonoBehaviour
     }
 
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J) && previewStructure == null)
-            Window();
-
+    {       
         if (previewStructure != null)
         {
-            PreviewPositionUpdate();
-        }        
-    }
-    private void Window()
-    {
-        if (!isActivated)
-            OnCraftButton();
-        else
-            OnCancleButton();
-    }
+            PreviewPositionUpdate();            
+        }   
+        if(Input.GetButtonDown("Fire1"))
+        {
+            Build();
+        }
+    }    
 
     /// <summary>
     /// 씬 제작버튼
@@ -100,14 +96,15 @@ public class Construct : MonoBehaviour
         inventoryWindow.SetActive(true);
     }
     public void OnBuildButton() //UIInventory 내 건설하기버튼
-    {         
+    {
+
         for (int i = 0; i < craft.Length; i++)
         {
             previewStructure = Instantiate(craft[i].previewStructure, playerTransform.position + playerTransform.forward, Quaternion.identity);
             structurePrefab = craft[i].RealStructurePrefab;
-
         }
-        CraftPanalCanvas.SetActive(false);        
+        CraftPanalCanvas.SetActive(false);      
+        
     }
 
 
@@ -149,7 +146,11 @@ public class Construct : MonoBehaviour
 
     }
 
-
+    public void UseResource(float NeedValue, float duration)
+    {
+         NeedItemIndex = NeedValue;
+         NeedDuration = duration;
+    }
 
     /// <summary>
     /// 건축취소 Fkey입력시 호출함수

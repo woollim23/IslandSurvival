@@ -22,5 +22,6 @@ MonoBehaviour:
   maxStackAmount: 20
   consumables: []
   equipPrefab: {fileID: 0}
-  Constructables: []
+  constructables: []
+  previewStructurePrefab: {fileID: 0}
   structurePrefab: {fileID: 0}
