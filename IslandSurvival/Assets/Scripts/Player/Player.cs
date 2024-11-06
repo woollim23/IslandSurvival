@@ -5,6 +5,7 @@ public class Player : Singletone<Player>
 {
     public PlayerController controller;
     public PlayerCondition condition;
+    public PlayerAttack attack;
     public Equipment equip;
     public Animator animator;
 
@@ -19,6 +20,7 @@ public class Player : Singletone<Player>
         CharacterManager.Instance.Player = this;
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
+        attack = GetComponent<PlayerAttack>();
         equip = GetComponent<Equipment>();
         animator = GetComponentInChildren<Animator>();
     }

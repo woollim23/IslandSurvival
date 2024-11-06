@@ -28,8 +28,7 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity; // 회전 민감도
     private Vector2 mouseDelta; // inputsystem으로 입력 받는 마우스 델타값
     public bool canLook = true;
-    [SerializeField]float camHeight = 2.0f;   // 카메라의 높이
-    [SerializeField] float camDistance = 4.0f; // 캐릭터와 카메라의 거리
+    public bool isInputBlocked = true; // 입력을 막는 플래그
 
     [Header("event")]
     public Action inventory;
@@ -37,7 +36,6 @@ public class PlayerController : MonoBehaviour
     public event Action<Equip> onAttackAction; // 공격 이벤트
     public event Action<bool> onMoveEvent; // 이동 애니 이벤트
     public event Action onJumpEvent; // 점프 애니 이벤트
-    public event Action onAttackEvent; // 공격 애니 이벤트
 
     private Rigidbody _rigidbody;
     public CapsuleCollider _capsuleCollider;
@@ -59,12 +57,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isInputBlocked)
+        {
+            return; // 입력을 막는 중이면 Update 함수 종료
+        }
         Move();
         CheckWall();
     }
 
     private void LateUpdate()
     {
+        if (isInputBlocked)
+        {
+            return; // 입력을 막는 중이면 Update 함수 종료
+        }
         if (canLook)
         {
             CameraLook();
@@ -204,12 +210,15 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Performed && canLook)
         {
             onAttackAction?.Invoke(equipment.curEquip);
-            onAttackEvent?.Invoke();
         }
     }
 
     public void OnInventory(InputAction.CallbackContext context)
     {
+        if (isInputBlocked)
+        {
+            return; // 입력을 막는 중이면 Update 함수 종료
+        }
         if (context.phase == InputActionPhase.Started)
         {
             inventory?.Invoke(); // UIInventory.Toggle()

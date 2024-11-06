@@ -15,11 +15,6 @@ public class Resource : MonoBehaviour
 
     private GameObject stumpInstance;
 
-    private void Start()
-    {
-        initialCapacity = capacity;
-    }
-
     public void Gather(Vector3 hitPoint, Vector3 hitNormal)
     {
         for (int i = 0; i < quantityPerHit; i++)
@@ -36,7 +31,7 @@ public class Resource : MonoBehaviour
             gameObject.SetActive(false); // 자원 오브젝트 비활성화
 
             // 리스폰 매니저에 자원 리스폰 요청
-            RespawnManager.Instance.StartRespawn(gameObject, 60f, transform.position, stumpInstance);
+            RespawnManager.Instance.StartRespawn(gameObject, 5f, transform.position, stumpInstance);
         }
     }
 
