@@ -63,6 +63,6 @@ public class ItemData : ScriptableObject
     public ItemDataConstructable[] constructables;
 
     [Header("Structure")]
-    public GameObject previewStructurePrefab;
-    public GameObject structurePrefab;
+    public GameObject previewStructure;
+    public GameObject RealStructurePrefab;
 }

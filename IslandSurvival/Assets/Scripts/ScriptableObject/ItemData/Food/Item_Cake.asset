@@ -28,3 +28,6 @@ MonoBehaviour:
     value: 5
     duration: 5
   equipPrefab: {fileID: 0}
+  constructables: []
+  previewStructure: {fileID: 0}
+  RealStructurePrefab: {fileID: 0}

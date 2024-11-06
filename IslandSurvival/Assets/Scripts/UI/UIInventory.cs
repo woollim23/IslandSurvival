@@ -26,13 +26,14 @@ public class UIInventory : MonoBehaviour
     public GameObject constructButton;
     public GameObject dropButton;
     public GameObject cookButton;
+    public GameObject CancelInfoTxt;
 
     private PlayerController controller;
     private PlayerCondition condition;
     private Construct construct;
 
-    ItemData selectedItem;
-    int selectedItemIndex = 0;
+    public ItemData selectedItem;
+    public int selectedItemIndex = 0;
 
     int curEquipIndex;
 
@@ -80,6 +81,7 @@ public class UIInventory : MonoBehaviour
         cookButton.SetActive(false);
         CraftButton.SetActive(false);
         constructButton.SetActive(false);
+        CancelInfoTxt.SetActive(false);
     }
 
     public void Toggle()
@@ -319,7 +321,7 @@ public class UIInventory : MonoBehaviour
         UnEquip(selectedItemIndex);
     }
 
-    public void OnCraftButton() //제작하기
+    public void OnCraftButton() //제작하기 버튼달기
     {
 
         if (selectedItem.type == ItemType.Resource)
@@ -340,7 +342,7 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    public void OnConstructButton() //건설하기
+    public void OnConstructButton() //건설하기 버튼달기
     {
         inventoryWindow.SetActive(false);
 
@@ -359,6 +361,7 @@ public class UIInventory : MonoBehaviour
                 }
             }
             RemoveSelectedItem();
+            CancelInfoTxt.SetActive(true);
         }
     }
 }
