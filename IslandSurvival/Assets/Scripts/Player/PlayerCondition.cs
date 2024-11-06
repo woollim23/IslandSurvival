@@ -85,12 +85,8 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         isDead = true;
         onDeadEvent?.Invoke();
         CharacterManager.Instance.Player.controller.canLook = false;
-        StartCoroutine(PauseCoroutine(3));
-    }
+        CharacterManager.Instance.Player.controller.isInputBlocked = true;
 
-    private IEnumerator PauseCoroutine(float delay)
-    {
-        yield return new WaitForSeconds(delay); // 지정한 시간(1초) 기다림
         Cursor.visible = true; // 커서를 화면에 보이도록 설정
         Cursor.lockState = CursorLockMode.None; // 커서가 자유롭게 움직이도록 설정
         targetCanvas.SetActive(true);

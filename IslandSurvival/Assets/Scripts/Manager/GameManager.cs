@@ -25,6 +25,7 @@ public class GameManager : Singletone<GameManager>
         SceneManager.LoadSceneAsync("MainGame");
         CharacterManager.Instance.Player.condition.isDead = false;
         CharacterManager.Instance.Player.controller.canLook = true;
+        CharacterManager.Instance.Player.controller.isInputBlocked = false;
     }
 
     public void LoadTitleScene()
