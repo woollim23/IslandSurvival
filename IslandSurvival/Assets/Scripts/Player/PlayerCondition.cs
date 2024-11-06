@@ -38,6 +38,16 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         }
     }
 
+    public void DecreaseTemperature(float amount)
+    {
+        temperature.Subtract(amount);
+    }
+
+    public void IncreaseTemperature(float amount)
+    {
+        temperature.Add(amount);
+    }
+
     public void Heal(float amount)
     {
         health.Add(amount);
@@ -47,14 +57,15 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     {
         hunger.Add(amount);
     }
-    public void DecreaseTemperature(float amount)
+
+    public void DrinkWater(float amount)
     {
-        temperature.Subtract(amount);
+        thirst.Add(amount);
     }
 
-    public void IncreaseTemperature(float amount)
+    public void UpStamina(float amount)
     {
-        temperature.Add(amount);
+        stamina.Add(amount);
     }
 
     public void Doping(float value, float duration)

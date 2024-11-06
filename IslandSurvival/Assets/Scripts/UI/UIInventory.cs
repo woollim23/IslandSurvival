@@ -226,10 +226,22 @@ public class UIInventory : MonoBehaviour
                     case ConsumableType.Doping:
                         condition.Doping(selectedItem.consumables[i].value, selectedItem.consumables[i].duration);
                         break;
+                    case ConsumableType.Thirst:
+                        condition.DrinkWater(selectedItem.consumables[i].value);
+                        break;
+                    case ConsumableType.Stamina:
+                        condition.UpStamina(selectedItem.consumables[i].value);
+                        break;
+
                 }
             }
             RemoveSelectedItem();
         }
+    }
+
+    public void OnCookButton()
+    {
+
     }
 
     public void OnDropButton()
