@@ -20,6 +20,7 @@ public class Construct : MonoBehaviour
     public GameObject constructPrefab;
     public GameObject CraftPanalCanvas;// 기본 베이스 UI
     public UICraft craftInventory;
+    public UIInventory inventory;
 
 
     private bool isActivated = false;  // CraftManual UI 활성 상태    
@@ -41,6 +42,7 @@ public class Construct : MonoBehaviour
     private float range;
     private float NeedItemIndex;
     private float NeedDuration;
+    private int selectedIndex;
 
     //제작가능 아이템 : ItemType.Resource
     //건설가능 아이템 : ItemType.Constructable
@@ -50,6 +52,7 @@ public class Construct : MonoBehaviour
         controller = CharacterManager.Instance.Player.controller;
         dropPosition = CharacterManager.Instance.Player.dropPosition;
         CharacterManager.Instance.Player.controller.onCancelStruct += CancelStruct; // 취소 이벤트 등록
+        //selectedIndex = inventory.selectedItemIndex;
     }
 
     void Update()
@@ -65,47 +68,35 @@ public class Construct : MonoBehaviour
     }    
 
     /// <summary>
-    /// 씬 제작버튼
+    /// Inventory내에 제작버튼
     /// </summary>
     public void OnCraftButton()
     {
         isActivated = true;
         CraftPanalCanvas.SetActive(true);
         inventoryWindow.SetActive(false);
-    }
-    public void OnStartCraftButton() //크래프트캔버스 내 제작하기버튼
-    {
-        ItemData data = CharacterManager.Instance.Player.itemData;
+        
+    }    
 
-        DropStructure(data);
-
-    }
-
-    /// <summary>
-    /// 제작하기완료시 자동으로 필드에 드롭
-    /// </summary>    
-    void DropStructure(ItemData data)
-    {
-        Instantiate(data.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
-    }
-
-    public void OnCancleButton() //크래프트캔버스 내 취소하기버튼
+    public void OnCancleButton() //크래프트캔버스 취소하기버튼
     {
         isActivated = false;
         CraftPanalCanvas.SetActive(false);
         inventoryWindow.SetActive(true);
     }
-    public void OnBuildButton() //UIInventory 내 건설하기버튼
-    {
-
-        for (int i = 0; i < craft.Length; i++)
-        {
-            previewStructure = Instantiate(craft[i].previewStructure, playerTransform.position + playerTransform.forward, Quaternion.identity);
-            structurePrefab = craft[i].RealStructurePrefab;
-        }
-        CraftPanalCanvas.SetActive(false);      
+    public void OnBuildButton() //Inventory 건설하기버튼
+    {        
+        SelectStructure(selectedIndex);
+        CraftPanalCanvas.SetActive(false);    
         
     }
+    void SelectStructure(int index)
+    {
+        previewStructure = Instantiate(craft[index].previewStructure, playerTransform.position + playerTransform.forward, Quaternion.identity);
+        structurePrefab = craft[index].RealStructurePrefab;
+    }
+
+
 
 
     /// <summary>
