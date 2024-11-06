@@ -14,6 +14,7 @@ public class UICraft : MonoBehaviour
     public GameObject CraftPanalCanvas;// 기본 베이스 UI
     public Transform CraftSlotsPanel;
     public Transform CraftNeedItemSlotsPanel;
+    public Transform dropPosition;
 
     [Header("Select Item")]
     public TextMeshProUGUI selectedStructureName;
@@ -57,6 +58,11 @@ public class UICraft : MonoBehaviour
         //    //haveItemSlots[i].craftInventory = this;
         //}
         ClearSelectedItemWindow();
+
+    }
+    private void Update()
+    {
+        UpdateCraftUI();
     }
 
     void ClearSelectedItemWindow()
@@ -92,7 +98,7 @@ public class UICraft : MonoBehaviour
         {
             selectedNeedItemName.text += selectedItem.constructables[i].type.ToString() + "\n";
             selectedNeedItemValue.text += selectedItem.constructables[i].Needvalue.ToString() + "\n";
-        }        
+        }
     }
 
     public void GetInventoryItem()
@@ -107,33 +113,46 @@ public class UICraft : MonoBehaviour
 
     public void UpdateCraftUI()
     {
-        if (item.type == ItemType.Constructable)
+        for (int i = 0; i < inventory.slots.Length; i++)
         {
-            for (int i = 0; i < craftSlots.Length; i++)
+            if (inventory.slots[i].item != null && inventory.slots[i].item.type == ItemType.Resource)
             {
-                if (craftSlots[i].item == null)
-                {
-                    craftSlots[i].Set();
+                for (int j = 0; j < haveItemSlots.Length; j++)
+                { 
+                    if (haveItemSlots[j].item == null)
+                    {
+                        haveItemSlots[j].item = inventory.slots[i].item;
+                        haveItemSlots[j].icon.sprite = inventory.slots[i].icon.sprite;
+                        haveItemSlots[j].quatityText.text = inventory.slots[i].quatityText.text;
+                    }
+                    else
+                    {
+                        haveItemSlots[j].item = null;
+                    }                
                 }
-            }
-        }
-
-        if (inventory.slot.item.type == ItemType.Resource)
-        {
-            for (int i = 0; i < haveItemSlots.Length; i++)
-            {
-                if (haveItemSlots[i].item != null)
-                {
-                    GetInventoryItem();
-                }
-                else
-                {
-                    haveItemSlots[i].item = null;
-                }
-
             }
         }
     }
 
+    public void OnStartCraftButton() //크래프트캔버스 내 제작하기버튼
+    {
+        ItemData data = CharacterManager.Instance.Player.itemData;
 
+        DropStructure(selectedItem);
+
+    }
+
+    /// <summary>
+    /// 제작하기완료시 자동으로 필드에 드롭
+    /// </summary>    
+    void DropStructure(ItemData data)
+    {
+        Instantiate(data.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
+    }
+
+    //TODO : 크래프트인벤에서 사용아이템삭제
+    //TODO : 인벤에서 건축아이템삭제
+    
+
+    
 }

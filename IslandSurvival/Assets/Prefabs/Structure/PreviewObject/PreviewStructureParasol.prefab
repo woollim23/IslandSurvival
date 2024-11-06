@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1260673042382576968}
   - component: {fileID: 6298533611318972618}
-  - component: {fileID: 1316901884801295304}
   - component: {fileID: 7453634108846537823}
   m_Layer: 0
   m_Name: PreviewStructureParasol
@@ -50,33 +49,6 @@ MonoBehaviour:
   layerGround: 11
   green: {fileID: 2100000, guid: e983795d79dc4e5419aacf445d41c8e8, type: 2}
   red: {fileID: 2100000, guid: b1cb0babe110b4a49becf01ad47da3c8, type: 2}
---- !u!54 &1316901884801295304
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3898853450354302059}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &7453634108846537823
 BoxCollider:
   m_ObjectHideFlags: 0
