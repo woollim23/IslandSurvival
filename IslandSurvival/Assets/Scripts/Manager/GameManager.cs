@@ -24,7 +24,7 @@ public class GameManager : Singletone<GameManager>
     {
         SceneManager.LoadSceneAsync("MainGame");
 
-        if (CharacterManager.Instance != null)
+        if (CharacterManager.Instance.Player != null)
         {
             CharacterManager.Instance.Player.condition.isDead = false;
             CharacterManager.Instance.Player.controller.canLook = true;
