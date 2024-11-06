@@ -15,9 +15,12 @@ MonoBehaviour:
   displayName: "\uACE1\uAD2D\uC774"
   description: "\uCC44\uAD11\uC744 \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   type: 1
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: cbc814ccd7bb0104eb4a840ab079a5c2, type: 3}
   dropPrefab: {fileID: 8457964096292958348, guid: c281004da4aaa564798cc9795f986dd9, type: 3}
   canStack: 0
   maxStackAmount: 0
   consumables: []
   equipPrefab: {fileID: 8612402562266097015, guid: 492a595454f6db54397ee1d1a27f6eaa, type: 3}
+  constructables: []
+  previewStructurePrefab: {fileID: 0}
+  structurePrefab: {fileID: 0}
