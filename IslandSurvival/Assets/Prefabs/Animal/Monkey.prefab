@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 4238363971148098169}
   m_Father: {fileID: 860683593579106319}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -71.635765, y: 0.00008938573, z: -0.00008483356}
 --- !u!1 &731068262944332107
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ Transform:
   m_Children:
   - {fileID: 860683593579106319}
   m_Father: {fileID: 6751769758456488197}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.0000030263247, y: 0, z: 0}
 --- !u!1 &2334699144398365779
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 860683593579106319}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10.479094, y: -44.99549, z: 83.335754}
 --- !u!1 &3758070022641337746
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,20 +278,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 658a88299e2c84fc59e197948dd2a72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detecDistance: 15
-  safeDistance: 0
-  minWanderDistance: 5
-  maxWanderDistance: 10
-  minWanderWaitTime: 2
-  maxWanderWaitTime: 5
+  detecDistance: 1
+  safeDistance: 2
+  minWanderDistance: 0.5
+  maxWanderDistance: 0.9
+  minWanderWaitTime: 1
+  maxWanderWaitTime: 2
+  playerDistance: 0
   fieldOfView: 120
-  animator: {fileID: 7820734266254435383}
-  animal: {fileID: 8891246507120369825}
-  damage: 8
+  _animal: {fileID: 0}
+  damage: 5
   attackRate: 1.5
+  lastAttackTime: 0
   attackDistance: 2
-  fadeTime: 1.5
-  maxVolume: 0.2
 --- !u!65 &5614179020043542950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -461,7 +460,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 860683593579106319}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10.479094, y: 44.99549, z: -83.335754}
 --- !u!1 &4629853852633466020
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,7 +491,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 860683593579106319}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -6.1342016e-22, y: 0.0000050089557, z: -179.99998}
 --- !u!1 &5322905965805620023
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +529,7 @@ Transform:
   - {fileID: 3339934820823610189}
   - {fileID: 6728960603596521150}
   m_Father: {fileID: 8249240988093921723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.98021, y: 0, z: 0}
 --- !u!1 &5959059517222055752
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +560,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6728960603596521150}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 24.875908, y: -0.00003218191, z: -0.0000016911655}
 --- !u!1 &7173877920287270936
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +591,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 860683593579106319}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -17.424324, y: 0.6588963, z: 170.03624}
 --- !u!1 &7484884722651443060
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +622,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 860683593579106319}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -17.424324, y: -0.6588963, z: -170.03624}
 --- !u!1 &8589267299962657663
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +653,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 860683593579106319}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.1342016e-22, y: -0.0000050089557, z: -179.99998}
 --- !u!1 &9190686865343708516
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,4 +685,4 @@ Transform:
   m_Children:
   - {fileID: 8249240988093921723}
   m_Father: {fileID: 1071684712418202003}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98021, y: 0, z: 0}
