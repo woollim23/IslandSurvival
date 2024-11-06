@@ -32,7 +32,7 @@ public abstract class AnimalAI : MonoBehaviour
     
     public float fieldOfView = 120f;
     
-    static public Animator animator;
+    public Animator animator;
     private SkinnedMeshRenderer[] meshRenderers;
     public Animal animal;
     private float lookDirection;
