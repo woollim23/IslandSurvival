@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.Utilities;
 using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class UIInventory : MonoBehaviour
@@ -254,16 +255,16 @@ public class UIInventory : MonoBehaviour
     public void OnCookButton()
     {
         Debug.Log(slots[selectedItemIndex].item.displayName);
-        if(selectedItem.displayName == "물")
+        if (selectedItem.displayName == "물")
         {
             slots[selectedItemIndex].item = staminaPortionData;
         }
-        else if(selectedItem.displayName == "사과")
+        else if (selectedItem.displayName == "사과")
         {
             slots[selectedItemIndex].item = healthPortionData;
             Debug.Log(slots[selectedItemIndex].item.displayName);
         }
-        else if(selectedItem.displayName == "스테이크")
+        else if (selectedItem.displayName == "스테이크")
         {
             slots[selectedItemIndex].item = hamData;
         }
@@ -325,46 +326,26 @@ public class UIInventory : MonoBehaviour
 
     public void OnCraftButton() //제작하기 버튼달기
     {
-
         if (selectedItem.type == ItemType.Resource)
-        {
+        {            
             for (int i = 0; i < selectedItem.constructables.Length; i++)
             {
                 switch (selectedItem.constructables[i].type)
                 {
                     case ConstructableType.Log:
-                        
+                        construct.UseResource(selectedItem.constructables[i].Needvalue);
                         break;
                     case ConstructableType.Stone:
-                        
+                        construct.UseResource(selectedItem.constructables[i].Needvalue);
                         break;
                 }
             }
-            RemoveSelectedItem();            
         }
     }
 
     public void OnConstructButton() //건설하기 버튼달기
-    {
-        inventoryWindow.SetActive(false);
-
-        if (selectedItem.type == ItemType.Constructable)
-        {
-            for (int i = 0; i < selectedItem.constructables.Length; i++)
-            {
-                switch (selectedItem.constructables[i].type)
-                {
-                    case ConstructableType.Log:
-                        //construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
-                        break;
-                    case ConstructableType.Stone:
-                        //construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
-                        break;
-                }
-            }
-            RemoveSelectedItem();
-            cancelInfoTxt.SetActive(true);
-            buildUI.SetActive(true);
-        }
+    {    
+        RemoveSelectedItem();
+        cancelInfoTxt.SetActive(true);        
     }
 }
