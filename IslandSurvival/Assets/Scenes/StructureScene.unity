@@ -1838,6 +1838,7 @@ MonoBehaviour:
   constructPrefab: {fileID: 0}
   CraftPanalCanvas: {fileID: 455178245134390255}
   craftInventory: {fileID: 0}
+  inventory: {fileID: 0}
   craft:
   - craftName: "\uD30C\uB77C\uC194"
     RealStructurePrefab: {fileID: 5259509010551675299, guid: f470ae3ab00eab943b971ac482aaf026, type: 3}
