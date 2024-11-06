@@ -4,6 +4,10 @@ using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class UIInventory : MonoBehaviour
 {
+    [SerializeField] private ItemData hamData;
+    [SerializeField] private ItemData staminaPortionData;
+    [SerializeField] private ItemData healthPortionData;
+
     public ItemSlot[] slots;
     public ItemSlot slot;
     public GameObject inventoryWindow;
@@ -21,6 +25,7 @@ public class UIInventory : MonoBehaviour
     public GameObject CraftButton;
     public GameObject constructButton;
     public GameObject dropButton;
+    public GameObject cookButton;
 
     private PlayerController controller;
     private PlayerCondition condition;
@@ -71,9 +76,10 @@ public class UIInventory : MonoBehaviour
         useButton.SetActive(false);
         equipButton.SetActive(false);
         unequipButton.SetActive(false);
+        dropButton.SetActive(false);
+        cookButton.SetActive(false);
         CraftButton.SetActive(false);
         constructButton.SetActive(false);
-        dropButton.SetActive(false);
     }
 
     public void Toggle()
@@ -100,10 +106,10 @@ public class UIInventory : MonoBehaviour
         // 현재 슬롯에 아이템이 스택 가능한지
         if (data.canStack)
         {
-            ItemSlot slot = GetItemStack(data);
-            if (slot != null)
+            ItemSlot itemslot = GetItemStack(data);
+            if (itemslot != null)
             {
-                slot.quantity++;
+                itemslot.quantity++;
                 UpdateUI();
                 CharacterManager.Instance.Player.itemData = null;
                 return;
@@ -205,7 +211,9 @@ public class UIInventory : MonoBehaviour
         unequipButton.SetActive(selectedItem.type == ItemType.Equipable && slots[index].equipped);
         CraftButton.SetActive(selectedItem.type == ItemType.Resource);
         constructButton.SetActive(selectedItem.type == ItemType.Constructable);
-        dropButton.SetActive(true);
+        dropButton.SetActive(selectedItem != null);
+
+        cookButton.SetActive(selectedItem.displayName == "물" || selectedItem.displayName == "스테이크" || selectedItem.displayName == "사과");
 
     }
 
@@ -226,10 +234,37 @@ public class UIInventory : MonoBehaviour
                     case ConsumableType.Doping:
                         condition.Doping(selectedItem.consumables[i].value, selectedItem.consumables[i].duration);
                         break;
+                    case ConsumableType.Thirst:
+                        condition.DrinkWater(selectedItem.consumables[i].value);
+                        break;
+                    case ConsumableType.Stamina:
+                        condition.UpStamina(selectedItem.consumables[i].value);
+                        break;
+
                 }
             }
             RemoveSelectedItem();
         }
+    }
+
+    public void OnCookButton()
+    {
+        Debug.Log(slots[selectedItemIndex].item.displayName);
+        if(selectedItem.displayName == "물")
+        {
+            slots[selectedItemIndex].item = staminaPortionData;
+        }
+        else if(selectedItem.displayName == "사과")
+        {
+            slots[selectedItemIndex].item = healthPortionData;
+            Debug.Log(slots[selectedItemIndex].item.displayName);
+        }
+        else if(selectedItem.displayName == "스테이크")
+        {
+            slots[selectedItemIndex].item = hamData;
+        }
+        UpdateUI();
+        ClearSelectedItemWindow();
     }
 
     public void OnDropButton()
