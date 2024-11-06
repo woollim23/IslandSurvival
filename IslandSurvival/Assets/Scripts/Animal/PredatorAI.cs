@@ -29,22 +29,16 @@ public class PredatorAI : AnimalAI
     {
         base.Update();
 
-        switch (aiState)
+        if (aiState == AIState.Wandering || aiState == AIState.Idle)
         {
-            case AIState.Idle:
-            case AIState.Wandering:
-                PassiveUpdate();
-                break;
-            case AIState.Attacking:
-                AttackingUpdate();
-                break;
+            PassiveUpdate();
         }
     }
     
     public override void SetState(AIState state)
     {
         base.SetState(state);
-
+        
         switch (aiState)
         {
             case AIState.Attacking:
@@ -101,7 +95,6 @@ public class PredatorAI : AnimalAI
             else
             {
                 agent.SetDestination(transform.position);
-                agent.isStopped = true;
                 SetState(AIState.Wandering);
             }
         }

@@ -6,16 +6,19 @@ public enum AIState
     Idle,
     Wandering,
     Attacking,
-    Runaway
+    Fleeing
 }
 
 public abstract class AnimalAI : MonoBehaviour
 {
-    [Header("AI")] protected NavMeshAgent agent;
+    [Header("AI")]
+    protected NavMeshAgent agent;
     public float detecDistance;
+    public float safeDistance;
     protected AIState aiState;
 
-    [Header("Wandering")] public float minWanderDistance;
+    [Header("Wandering")]
+    public float minWanderDistance;
     public float maxWanderDistance;
     public float minWanderWaitTime;
     public float maxWanderWaitTime;
@@ -29,14 +32,10 @@ public abstract class AnimalAI : MonoBehaviour
     private float lookDirection;
     private Vector3 previousPosition;
 
-    private void Awake()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         SetState(AIState.Wandering);
         animator = GetComponent<Animator>();
         animal = GetComponent<Animal>();
@@ -74,15 +73,26 @@ public abstract class AnimalAI : MonoBehaviour
     public virtual void SetState(AIState state)
     {
         aiState = state;
+        
+        switch (aiState)
+        {
+            case AIState.Idle:
+                agent.speed = animal.walkSpeed;
+                agent.isStopped = true;
+                break;
+            case AIState.Wandering:
+                agent.speed = animal.walkSpeed;
+                agent.isStopped = false;
+                break;
+        }
     }
 
     protected virtual void PassiveUpdate()
     {
-        if (aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
+        if (aiState == AIState.Wandering && agent.remainingDistance < 0.5f)
         {
             SetState(AIState.Idle);
             Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
-            //health += amount * Time.deltaTime; //heal animal's hp when far from player
         }
     }
 

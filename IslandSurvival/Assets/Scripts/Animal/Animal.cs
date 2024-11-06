@@ -20,7 +20,6 @@ public class Animal : MonoBehaviour, IDamagable
     public void TakePhysicalDamage(int damage)
     {
         health -= damage;
-        animator.SetTrigger("Hit");
         if (health <= 0)
         {
             Die();
@@ -33,8 +32,7 @@ public class Animal : MonoBehaviour, IDamagable
         {
             Instantiate(dropOnDeath[i].dropPrefab, transform.position + Vector3.up * 2, Quaternion.identity);
         }
-        
-        animator.SetTrigger("Death");
-        Destroy(gameObject, 2f);
+
+        Destroy(gameObject);
     }
 }
