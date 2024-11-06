@@ -1,13 +1,14 @@
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 
 public class UICraft : MonoBehaviour
 {
-    public ItemData item;
-    public UIInventory inventory;
-    public CraftSlot craftItemSlots;
+    public ItemData craftitem;
+    public UIInventory inventory;    
     public CraftSlot[] craftSlots;
     public HaveItemSlot[] haveItemSlots;
 
@@ -33,20 +34,17 @@ public class UICraft : MonoBehaviour
 
     //TODO : 인벤토리에 넣어주기 // 일단 필드에 드랍됨
     //TODO : 인벤토리에서 가져오기
-
-    private void Awake()
-    {
-        //item = inventory.slot.item; //인벤토리와 같은 아이템데이터SO를 넣어줌
-    }
+    
     private void Start()
     {
         CraftPanalCanvas.SetActive(false);
+        //ClearSelectedItemWindow();
 
         craftSlots = new CraftSlot[CraftSlotsPanel.childCount];
         for (int i = 0; i < craftSlots.Length; i++)
         {
             craftSlots[i] = CraftSlotsPanel.GetChild(i).GetComponent<CraftSlot>();
-            craftSlots[i].index = i;
+            craftSlots[i].index = i;            
             craftSlots[i].craftInventory = this;
         }
 
@@ -57,11 +55,10 @@ public class UICraft : MonoBehaviour
         //    // haveItemSlots[i].index = i;
         //    //haveItemSlots[i].craftInventory = this;
         //}
-        ClearSelectedItemWindow();
-
     }
     private void Update()
     {
+        UpdateCraft();
         UpdateCraftUI();
     }
 
@@ -74,6 +71,7 @@ public class UICraft : MonoBehaviour
         selectedNeedItemName.text = string.Empty;
         selectedNeedItemValue.text = string.Empty;
 
+        Cursor.lockState = CursorLockMode.None;
         craftButton.SetActive(true);
         cancelButton.SetActive(true);
     }
@@ -100,17 +98,18 @@ public class UICraft : MonoBehaviour
             selectedNeedItemValue.text += selectedItem.constructables[i].Needvalue.ToString() + "\n";
         }
     }
+    
 
-    public void GetInventoryItem()
+    public void UpdateCraft()
     {
-        for (int i = 0; i < haveItemSlots.Length; i++)
+        for (int i = 0; i < craftSlots.Length; i++)
         {
-            haveItemSlots[i].item = inventory.slots[i].item;
-            haveItemSlots[i].icon = inventory.slots[i].icon;
-            haveItemSlots[i].quatityText.text = inventory.slots[i].quatityText.text;
+            if (craftSlots[i].item != null)
+            {                   
+                craftSlots[i].Set();
+            }            
         }
     }
-
     public void UpdateCraftUI()
     {
         for (int i = 0; i < inventory.slots.Length; i++)
@@ -134,12 +133,15 @@ public class UICraft : MonoBehaviour
         }
     }
 
-    public void OnStartCraftButton() //크래프트캔버스 내 제작하기버튼
+    /// <summary>
+    /// 크래프트캔버스 내 제작하기버튼
+    /// </summary>
+    public void OnStartCraftButton()
     {
-        ItemData data = CharacterManager.Instance.Player.itemData;
-
+        //ItemData data = CharacterManager.Instance.Player.itemData;
         DropStructure(selectedItem);
-
+        CraftPanalCanvas.SetActive(false);
+        CharacterManager.Instance.Player.controller.ToggleCursor();
     }
 
     /// <summary>
@@ -149,10 +151,6 @@ public class UICraft : MonoBehaviour
     {
         Instantiate(data.dropPrefab, dropPosition.position, Quaternion.Euler(Vector3.one * Random.value * 360));
     }
-
     //TODO : 크래프트인벤에서 사용아이템삭제
-    //TODO : 인벤에서 건축아이템삭제
-    
-
-    
+    //TODO : 인벤에서 건축아이템삭제        
 }

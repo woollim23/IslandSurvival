@@ -27,8 +27,7 @@ public enum ConstructableType
 public class ItemDataConstructable
 {
     public ConstructableType type;
-    public float Needvalue;
-    public float setDuration;
+    public float Needvalue;    
 }
 
 [Serializable]
@@ -63,6 +62,7 @@ public class ItemData : ScriptableObject
     public ItemDataConstructable[] constructables;
 
     [Header("Structure")]
-    public GameObject previewStructurePrefab;
-    public GameObject structurePrefab;
+    public GameObject previewStructure;
+    public GameObject RealStructurePrefab;
+    public float setDuration;
 }

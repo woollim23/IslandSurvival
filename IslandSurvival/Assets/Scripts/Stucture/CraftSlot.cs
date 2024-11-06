@@ -7,8 +7,7 @@ public class CraftSlot : MonoBehaviour
 {
     public ItemData item; //SO넣어주기
     public UIInventory inventory;
-    public UICraft craftInventory;
-    public CraftSlot[] craftSlots;
+    public UICraft craftInventory;    
 
     public Button button;
     public Image icon;
@@ -30,8 +29,8 @@ public class CraftSlot : MonoBehaviour
     public void Set()
     {
         // TODO : 아이콘 배열하기
-        icon.gameObject.SetActive(true);
-        icon.sprite = item.icon;        
+
+        icon.sprite = item.icon;   
 
         if (outline != null)
         {
