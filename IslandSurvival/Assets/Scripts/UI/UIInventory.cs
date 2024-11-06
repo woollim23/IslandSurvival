@@ -26,7 +26,8 @@ public class UIInventory : MonoBehaviour
     public GameObject constructButton;
     public GameObject dropButton;
     public GameObject cookButton;
-    public GameObject CancelInfoTxt;
+    public GameObject cancelInfoTxt;
+    public GameObject buildUI;
 
     private PlayerController controller;
     private PlayerCondition condition;
@@ -81,7 +82,8 @@ public class UIInventory : MonoBehaviour
         cookButton.SetActive(false);
         CraftButton.SetActive(false);
         constructButton.SetActive(false);
-        CancelInfoTxt.SetActive(false);
+        cancelInfoTxt.SetActive(false);
+        buildUI.SetActive(false);
     }
 
     public void Toggle()
@@ -331,10 +333,10 @@ public class UIInventory : MonoBehaviour
                 switch (selectedItem.constructables[i].type)
                 {
                     case ConstructableType.Log:
-                        construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
+                        
                         break;
                     case ConstructableType.Stone:
-                        construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
+                        
                         break;
                 }
             }
@@ -353,15 +355,16 @@ public class UIInventory : MonoBehaviour
                 switch (selectedItem.constructables[i].type)
                 {
                     case ConstructableType.Log:
-                        construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
+                        //construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
                         break;
                     case ConstructableType.Stone:
-                        construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
+                        //construct.UseResource(selectedItem.constructables[i].Needvalue, selectedItem.constructables[i].setDuration);
                         break;
                 }
             }
             RemoveSelectedItem();
-            CancelInfoTxt.SetActive(true);
+            cancelInfoTxt.SetActive(true);
+            buildUI.SetActive(true);
         }
     }
 }
