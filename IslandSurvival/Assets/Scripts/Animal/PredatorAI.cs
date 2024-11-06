@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,72 +8,53 @@ public class PredatorAI : AnimalAI
     [Header("Combat")]
     public int damage;
     public float attackRate;
-    private float lastAttackTime;
+    public float lastAttackTime;
     public float attackDistance;
-    private NavMeshPath path;
-    private Renderer[] meshRenderers;
-    private AudioSource audioSource;
-    public float fadeTime;
-    public float maxVolume;
-    private float targetVolume;
-
-    private void Awake()
-    {
-        meshRenderers = GetComponentsInChildren<Renderer>();
-        targetVolume = 0;
-        audioSource = GetComponent<AudioSource>();
-        audioSource.volume = targetVolume;
-        audioSource.Play();
-    }
 
     protected override void Update()
     {
         base.Update();
 
-        if (aiState == AIState.Wandering || aiState == AIState.Idle)
+        switch (_aistate)
         {
-            PassiveUpdate();
+            case AIState.Attacking:
+                AttackingUpdate();
+                break;
         }
     }
-    
     public override void SetState(AIState state)
     {
         base.SetState(state);
         
-        switch (aiState)
+        switch (_aistate)
         {
             case AIState.Attacking:
-                agent.speed = animal.runSpeed;
-                agent.isStopped = false;
-                audioSource.volume = Mathf.MoveTowards(audioSource.volume, targetVolume, (maxVolume / fadeTime) * Time.deltaTime);
+                agent.speed = _animal.runSpeed;
                 break;
         }
-        
-        animator.speed = agent.speed / animal.walkSpeed;
     }
     
     protected override void PassiveUpdate()
     {
-        base.PassiveUpdate();
+       base.PassiveUpdate();
 
         if (playerDistance < detecDistance)
         {
             SetState(AIState.Attacking);
         }
     }
-    
+
     void AttackingUpdate()
     {
-        if (playerDistance < attackDistance && IsPlayerInFieldOfView())
+        if (playerDistance < attackDistance && IsPlayerinFieldOfView())
         {
             agent.isStopped = true;
             if (Time.time - lastAttackTime > attackRate)
             {
                 lastAttackTime = Time.time;
                 CharacterManager.Instance.Player.controller.GetComponent<IDamagable>().TakePhysicalDamage(damage);
-                animator.speed = 1;
-                animator.SetTrigger("Attack");
-                StartCoroutine(DamageFlash());
+                _animator.speed = 1;
+                _animator.SetTrigger("Attack"); //animator, parameter, trigger
             }
         }
         else
@@ -80,7 +62,7 @@ public class PredatorAI : AnimalAI
             if (playerDistance < detecDistance)
             {
                 agent.isStopped = false;
-                path = new NavMeshPath();
+                NavMeshPath path = new NavMeshPath();
                 if (agent.CalculatePath(CharacterManager.Instance.Player.transform.position, path))
                 {
                     agent.SetDestination(CharacterManager.Instance.Player.transform.position);
@@ -95,23 +77,16 @@ public class PredatorAI : AnimalAI
             else
             {
                 agent.SetDestination(transform.position);
+                agent.isStopped = true;
                 SetState(AIState.Wandering);
             }
         }
     }
-    
-    protected IEnumerator DamageFlash()
+
+    bool IsPlayerinFieldOfView()
     {
-        for (int i = 0; i < meshRenderers.Length; i++)
-        {
-            meshRenderers[i].material.color =new Color(1.0f, 0.6f, 0.6f);
-        }
-        
-        yield return new WaitForSeconds(0.1f);
-    
-        for (int i = 0; i < meshRenderers.Length; i++)
-        {
-            meshRenderers[i].material.color = Color.white;
-        }
+        Vector3 directionToPlayer = CharacterManager.Instance.Player.transform.position - transform.position;
+        float angle = Vector3.Angle(transform.forward, directionToPlayer);
+        return angle < fieldOfView * 0.5f;
     }
 }

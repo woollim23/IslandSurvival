@@ -1,33 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PreyAI : AnimalAI
 {
-    float fleeDistance;
-    
     protected override void Update()
     {
         base.Update();
-        
-        if (aiState == AIState.Wandering || aiState == AIState.Idle)
+
+        switch (_aistate)
         {
-            PassiveUpdate();
+            case AIState.Fleeing:
+                FleeingUpdate();
+                break;
         }
     }
     
     public override void SetState(AIState state)
     {
         base.SetState(state);
-
-        switch (aiState)
+        
+        switch (_aistate)
         {
             case AIState.Fleeing:
-                agent.speed = animal.runSpeed;
-                agent.isStopped = false;
+                agent.speed = _animal.runSpeed;
                 break;
         }
-        
-        animator.speed = agent.speed / animal.walkSpeed;
     }
     
     protected override void PassiveUpdate()
