@@ -68,10 +68,10 @@ public class PlayerAttack : MonoBehaviour
                 Debug.Log("적 공격");
 
                 //대상이 Animal이고 체력이 0 이하일 경우 사망 처리
-                if (damagable is Animal animal && animal.health <= 0)
-                {
-                    animal.Die();
-                }
+                //if (damagable is Animal animal && animal.health <= 0)
+                //{
+                //    animal.Die();
+                //}
             }
 
             

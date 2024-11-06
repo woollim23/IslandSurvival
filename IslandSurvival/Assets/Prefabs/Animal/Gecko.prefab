@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835282406846158636}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.029880172, y: -0.00000015092839, z: 0.00000000712399, w: 0.9995535}
+  m_LocalRotation: {x: -0.35256094, y: -0.031723168, z: 0.012503785, w: 0.93516743}
   m_LocalPosition: {x: 3.7373992e-16, y: 0.004982913, z: -4.4703483e-10}
   m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 0
@@ -180,9 +180,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2786573777326330425}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000110992374, y: -0.64458394, z: 0.7645336, w: 0.00000008059052}
-  m_LocalPosition: {x: -2.3206342e-15, y: -0.001164, z: -0.0074597127}
-  m_LocalScale: {x: 1, y: 0.99999946, z: 0.99999857}
+  m_LocalRotation: {x: -0.00000011099237, y: -0.64458394, z: 0.7645336, w: 0.00000008059052}
+  m_LocalPosition: {x: 4.560869e-19, y: -0.0011639941, z: -0.0074597136}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 0.9999999}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3312265793287070351}
@@ -275,15 +275,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d68aee59a2d54b33b4d937279c27b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detecDistance: 8
-  safeDistance: 0
-  minWanderDistance: 2
-  maxWanderDistance: 5
-  minWanderWaitTime: 3
-  maxWanderWaitTime: 6
+  detecDistance: 1
+  safeDistance: 2
+  minWanderDistance: 0.5
+  maxWanderDistance: 0.9
+  minWanderWaitTime: 1
+  maxWanderWaitTime: 2
+  playerDistance: 0
   fieldOfView: 120
-  animator: {fileID: 6109173755877688077}
-  animal: {fileID: 7427175307175503106}
+  _animal: {fileID: 0}
 --- !u!65 &4116261465809862762
 BoxCollider:
   m_ObjectHideFlags: 0
