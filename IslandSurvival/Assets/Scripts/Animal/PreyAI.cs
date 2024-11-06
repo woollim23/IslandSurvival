@@ -9,7 +9,7 @@ public class PreyAI : AnimalAI
     {
         base.Update();
 
-        switch (_aistate)
+        switch (aistate)
         {
             case AIState.Fleeing:
                 FleeingUpdate();
@@ -21,10 +21,10 @@ public class PreyAI : AnimalAI
     {
         base.SetState(state);
         
-        switch (_aistate)
+        switch (aistate)
         {
             case AIState.Fleeing:
-                agent.speed = _animal.runSpeed;
+                agent.speed = animal.runSpeed;
                 break;
         }
     }
