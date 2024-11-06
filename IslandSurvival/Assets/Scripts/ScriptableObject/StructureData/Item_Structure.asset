@@ -25,5 +25,5 @@ MonoBehaviour:
   - type: 0
     Needvalue: 5
     setDuration: 10
-  previewStructurePrefab: {fileID: 3898853450354302059, guid: 1629edb8a1c255d40a168298b96b11a8, type: 3}
-  structurePrefab: {fileID: 5259509010551675299, guid: f470ae3ab00eab943b971ac482aaf026, type: 3}
+  previewStructure: {fileID: 3898853450354302059, guid: 1629edb8a1c255d40a168298b96b11a8, type: 3}
+  RealStructurePrefab: {fileID: 5259509010551675299, guid: f470ae3ab00eab943b971ac482aaf026, type: 3}
