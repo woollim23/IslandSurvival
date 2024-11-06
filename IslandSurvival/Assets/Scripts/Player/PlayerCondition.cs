@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections;
+using TMPro.EditorUtilities;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCondition : MonoBehaviour, IDamagable
 {
     public UICondition uiCondition;
-    public GameObject targetCanvas;
+    public Canvas mainCanvas;
+    public GameObject gameOverCanvas;
 
     Condition health { get { return uiCondition.health; } }
     Condition stamina { get { return uiCondition.stamina; } }
@@ -38,6 +41,16 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         }
     }
 
+    public void DecreaseTemperature(float amount)
+    {
+        temperature.Subtract(amount);
+    }
+
+    public void IncreaseTemperature(float amount)
+    {
+        temperature.Add(amount);
+    }
+
     public void Heal(float amount)
     {
         health.Add(amount);
@@ -47,14 +60,15 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     {
         hunger.Add(amount);
     }
-    public void DecreaseTemperature(float amount)
+
+    public void DrinkWater(float amount)
     {
-        temperature.Subtract(amount);
+        thirst.Add(amount);
     }
 
-    public void IncreaseTemperature(float amount)
+    public void UpStamina(float amount)
     {
-        temperature.Add(amount);
+        stamina.Add(amount);
     }
 
     public void Doping(float value, float duration)
@@ -87,9 +101,11 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         CharacterManager.Instance.Player.controller.canLook = false;
         CharacterManager.Instance.Player.controller.isInputBlocked = true;
 
+        mainCanvas.gameObject.SetActive(false);
+        gameOverCanvas.SetActive(true);
+
         Cursor.visible = true; // 커서를 화면에 보이도록 설정
         Cursor.lockState = CursorLockMode.None; // 커서가 자유롭게 움직이도록 설정
-        targetCanvas.SetActive(true);
     }
 
     public void TakePhysicalDamage(int damage)

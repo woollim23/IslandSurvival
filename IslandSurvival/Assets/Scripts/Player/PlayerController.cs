@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity; // 회전 민감도
     private Vector2 mouseDelta; // inputsystem으로 입력 받는 마우스 델타값
     public bool canLook = true;
-    public bool isInputBlocked = true; // 입력을 막는 플래그
+    public bool isInputBlocked = false; // 입력을 막는 플래그
 
     [Header("event")]
     public Action inventory;
