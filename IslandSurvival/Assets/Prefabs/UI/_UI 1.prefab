@@ -1882,6 +1882,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bdae4c249043d84bbe37cae2d6b6063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hamData: {fileID: 0}
+  staminaPortionData: {fileID: 0}
+  healthPortionData: {fileID: 0}
   slots: []
   slot: {fileID: 0}
   inventoryWindow: {fileID: 1387694447495305936}
@@ -1897,6 +1900,7 @@ MonoBehaviour:
   CraftButton: {fileID: 0}
   constructButton: {fileID: 0}
   dropButton: {fileID: 918298911711493134}
+  cookButton: {fileID: 0}
 --- !u!1 &1714891071054812199
 GameObject:
   m_ObjectHideFlags: 0
@@ -7332,8 +7336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curValue: 0
-  startvalue: 100
-  maxValue: 100
+  startvalue: 5
+  maxValue: 60
   passiveValue: 5
   uiBar: {fileID: 5899146150127440276}
 --- !u!1 &7508147773843627891

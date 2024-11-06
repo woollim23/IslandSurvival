@@ -733,7 +733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3743338973031153909
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1013,6 +1013,7 @@ MonoBehaviour:
   staminaPortionData: {fileID: 11400000, guid: a44f875a573e8294190e240c9ea0d1f7, type: 2}
   healthPortionData: {fileID: 11400000, guid: 75b60f0916eb76b4fab248db5d53f48d, type: 2}
   slots: []
+  slot: {fileID: 0}
   inventoryWindow: {fileID: 2438538464192130768}
   slotPanel: {fileID: 6081920228972574425}
   dropPosition: {fileID: 0}

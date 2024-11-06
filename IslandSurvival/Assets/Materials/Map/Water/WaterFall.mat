@@ -110,7 +110,7 @@ Material:
     - Vector1_5AAC92D2: -0.1
     - Vector1_82AFA5C7: 0.078
     - Vector1_928B3B41: 10.66
-    - Vector1_960E898F: 0.216
+    - Vector1_960E898F: 0
     - Vector1_96CBBEA4: 0.176
     - Vector1_A77710BF: 1.18
     - Vector1_D1DAD1FD: 0.172
@@ -118,7 +118,7 @@ Material:
     - Vector1_E285A04C: 0.171
     - Vector1_E551740D: 0
     - Vector1_E76F4BD3: 0.09
-    - Vector1_F278FEE0: 0.108
+    - Vector1_F278FEE0: 0.116
     - Vector1_FA7C3821: -0.27
     - _AlphaClip: 0
     - _AlphaToMask: 0
