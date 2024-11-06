@@ -38,7 +38,7 @@ public class UICraft : MonoBehaviour
     private void Start()
     {
         CraftPanalCanvas.SetActive(false);
-        ClearSelectedItemWindow();
+        //ClearSelectedItemWindow();
 
         craftSlots = new CraftSlot[CraftSlotsPanel.childCount];
         for (int i = 0; i < craftSlots.Length; i++)
