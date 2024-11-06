@@ -65,7 +65,7 @@ public abstract class AnimalAI : MonoBehaviour
             lookDirection = 0;
         }
         
-        animator.SetFloat("LookDirection", lookDirection);
+        animator.SetFloat("lookDirection", lookDirection);
         
         switch (aistate)
         {
@@ -91,7 +91,7 @@ public abstract class AnimalAI : MonoBehaviour
                 agent.isStopped = false; //move
                 break;
         }
-        
+
         animator.speed = agent.speed / animal.walkSpeed;
     }
 
