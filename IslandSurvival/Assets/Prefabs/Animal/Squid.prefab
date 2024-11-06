@@ -236,9 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3520176b86624c1ea106b856abfed43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
-  walkSpeed: 2.5
-  runSpeed: 5
+  health: 12
+  walkSpeed: 1.5
+  runSpeed: 3
   dropOnDeath: []
 --- !u!114 &7499965845284983226
 MonoBehaviour:
@@ -252,15 +252,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d68aee59a2d54b33b4d937279c27b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detecDistance: 1
-  safeDistance: 2
-  minWanderDistance: 0.5
-  maxWanderDistance: 0.9
-  minWanderWaitTime: 1
-  maxWanderWaitTime: 2
+  detecDistance: 6
+  safeDistance: 5
+  minWanderDistance: 2
+  maxWanderDistance: 5
+  minWanderWaitTime: 2
+  maxWanderWaitTime: 5
   playerDistance: 0
   fieldOfView: 120
-  _animal: {fileID: 0}
+  animator: {fileID: 299600932220768164}
+  animal: {fileID: 2212395072233791585}
 --- !u!65 &2143832838786696618
 BoxCollider:
   m_ObjectHideFlags: 0
