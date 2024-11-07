@@ -589,8 +589,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  fullDayLength: 300
-  startTime: 0.4
+  fullDayLength: 30
+  startTime: 0
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 1756991647591328664}
   sunColor:
@@ -1122,7 +1122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4615976561974803810, guid: 80f64c8a27eef5c468e71fc896b712e2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8152186037273092905, guid: 80f64c8a27eef5c468e71fc896b712e2, type: 3}
       propertyPath: m_Color.b

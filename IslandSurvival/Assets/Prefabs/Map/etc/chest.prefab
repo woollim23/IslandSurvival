@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 7363157797693314003}
   - component: {fileID: 2532067127342632477}
   - component: {fileID: 1696468597685354202}
-  m_Layer: 0
+  - component: {fileID: 3487092600086596009}
+  - component: {fileID: -8872961477741170303}
+  m_Layer: 9
   m_Name: chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2322724897326462046}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9887218, z: -0, w: 0.14976431}
+  m_LocalRotation: {x: 0, y: -0.98872113, z: 0, w: 0.14976843}
   m_LocalPosition: {x: -11.07, y: 9.83, z: 18.9}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
@@ -85,6 +87,46 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3487092600086596009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2322724897326462046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a891159ed3566ba45b8007cfa2aac774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 1
+  itemToGive: {fileID: 11400000, guid: 0f1fd20d9d78f2c459b912143e05d1ed, type: 2}
+  quantityPerHit: 20
+  capacity: 20
+  initialCapacity: 20
+  treeStumpPrefab: {fileID: 0}
+  RockRemainsPrefab: {fileID: 0}
+--- !u!65 &-8872961477741170303
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2322724897326462046}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4300008, y: 1.0378889, z: 1.266451}
+  m_Center: {x: -9.611778e-11, y: 0.51894444, z: -0.0032251792}
 --- !u!1 &3968740959679971193
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +138,7 @@ GameObject:
   - component: {fileID: 7821046847187359438}
   - component: {fileID: 5987291249339015943}
   - component: {fileID: 8072576377294260569}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: lid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
