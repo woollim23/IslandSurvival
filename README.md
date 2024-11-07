@@ -1,4 +1,4 @@
-Island Survival 프로젝트
+# Island Survival 프로젝트
 
 ## 📖 목차
 1. [프로젝트 소개](#프로젝트-소개)
@@ -14,10 +14,15 @@ Island Survival 프로젝트
 
 ## 조작법
 WASD: 이동 방향키
+
 Space: 점프
+
 Tab: 인벤토리 열기/닫기
+
 E: 상호작용, 줍기
+
 마우스 왼쪽: 공격, 채집
+
 마우스 오른쪽: 건축 설치
 
 ## 주요기능
@@ -45,4 +50,5 @@ https://www.figma.com/design/PMjB7jszWaB8eSVTVexOsF/5%EC%A1%B0_%EC%84%9C%EB%B0%9
 ## 발표자료
 
 노션: https://linen-chicory-36b.notion.site/12852161dadc805fb02de53ac07a56ee?pvs=4
+
 PPT: [5조발표.pptx](https://github.com/user-attachments/files/17654660/5.pptx)
