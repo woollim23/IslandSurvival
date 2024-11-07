@@ -1,4 +1,4 @@
-#Island Survival 프로젝트
+Island Survival 프로젝트
 
 ## 📖 목차
 1. [프로젝트 소개](#프로젝트-소개)
