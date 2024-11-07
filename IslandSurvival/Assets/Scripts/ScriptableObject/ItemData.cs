@@ -1,20 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+ï»¿using System;
 using UnityEngine;
 
 public enum ItemType
 {
-    Consumable, //¼·Ãë°¡´É
-    Equipable, //ÀåÂø°¡´É
-    Resource //Á¦ÀÛ°¡´ÉÀÚ¿ø
+    Consumable, //ì„­ì·¨ê°€ëŠ¥
+    Equipable, //ì¥ì°©ê°€ëŠ¥
+    Resource, //ì œì‘ê°€ëŠ¥ìì›
+    Constructable, //ê±´ì„¤ê°€ëŠ¥í•œ
+    Item
 }
 
 public enum ConsumableType
 {
     Health,
+    Stamina,
     Hunger,
-    Stemina
+    Thirst,
+    Doping
+}
+public enum ConstructableType
+{
+    Log,
+    Stone
+}
+
+[Serializable]
+public class ItemDataConstructable
+{
+    public ConstructableType type;
+    public float Needvalue;    
 }
 
 [Serializable]
@@ -22,6 +36,7 @@ public class ItemDataConsumable
 {
     public ConsumableType type;
     public float value;
+    public float duration;
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]
@@ -40,4 +55,15 @@ public class ItemData : ScriptableObject
 
     [Header("Consumable")]
     public ItemDataConsumable[] consumables;
+
+    [Header("Equip")]
+    public GameObject equipPrefab;
+
+    [Header("Constructable")]
+    public ItemDataConstructable[] constructables;
+
+    [Header("Structure")]
+    public GameObject previewStructure;
+    public GameObject RealStructurePrefab;
+    public float setDuration;
 }

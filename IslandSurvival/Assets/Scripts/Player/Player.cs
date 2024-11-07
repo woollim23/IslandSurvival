@@ -1,23 +1,27 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 
 public class Player : Singletone<Player>
 {
     public PlayerController controller;
     public PlayerCondition condition;
-    //public Equipment equip;
+    public PlayerAttack attack;
+    public Equipment equip;
+    public Animator animator;
 
-    //public ItemData itemData;
+    public ItemData itemData;
     public Action addItem;
-
+    
     public Transform dropPosition;
 
     private void Awake()
     {
-        // 1. Ä³¸¯ÅÍ ¸Å´ÏÀú¿¡ Á¢±Ù. ¾ø´Â °ÍÀ» È®ÀÎÇÏ°í ¸Å´ÏÀú »ı¼º
+        // 1. ìºë¦­í„° ë§¤ë‹ˆì €ì— ì ‘ê·¼. ì—†ëŠ” ê²ƒì„ í™•ì¸í•˜ê³  ë§¤ë‹ˆì € ìƒì„±
         CharacterManager.Instance.Player = this;
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();
-        //equip = GetComponent<Equipment>();
+        attack = GetComponent<PlayerAttack>();
+        equip = GetComponent<Equipment>();
+        animator = GetComponentInChildren<Animator>();
     }
 }

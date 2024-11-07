@@ -1,12 +1,12 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 public class Condition : MonoBehaviour
 {
-    public float curValue; // ÇöÀç °ª
-    public float startvalue; // ÃÊ±â °ª
-    public float maxValue; // ÃÖ´ë °ª
-    public float passiveValue; // º¯È­ °ª
+    public float curValue; // í˜„ì¬ ê°’
+    public float startvalue; // ì´ˆê¸° ê°’
+    public float maxValue; // ìµœëŒ€ ê°’
+    public float passiveValue; // ë³€í™” ê°’
 
     public Image uiBar;
 
@@ -18,7 +18,7 @@ public class Condition : MonoBehaviour
 
     void Update()
     {
-        uiBar.fillAmount = GetPercentage(); // ¹Ù º¯°æ
+        uiBar.fillAmount = GetPercentage(); // ë°” ë³€ê²½
     }
 
 
@@ -30,12 +30,12 @@ public class Condition : MonoBehaviour
     public void Add(float value)
     {
         curValue = Mathf.Min(curValue + value, maxValue);
-        // ÃÖ´ë°ªÀ» ³ÑÁö ¾Ê°Ô ¹æ¾î ÇÔ
+        // ìµœëŒ€ê°’ì„ ë„˜ì§€ ì•Šê²Œ ë°©ì–´ í•¨
     }
 
     public void Subtract(float value)
     {
         curValue = Mathf.Max(curValue - value, 0);
-        // 0 ¹ØÀ¸·Î ³»·Á°¡Áö ¾Ê°Ô ¹æ¾î
+        // 0 ë°‘ìœ¼ë¡œ ë‚´ë ¤ê°€ì§€ ì•Šê²Œ ë°©ì–´
     }
 }

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5592369424344573480}
-  - component: {fileID: 1828379173251890505}
+  - component: {fileID: 1418678680547874950}
   - component: {fileID: 7341783348007116941}
   - component: {fileID: 4778951776873903662}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ItemLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,13 +29,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1480455680030857653}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1828379173251890505
+--- !u!114 &1418678680547874950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b71588098592b145b24bb37f5d276ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemData: {fileID: 11400000, guid: 2b592099da298744abb1d64fc2efbe98, type: 2}
+  data: {fileID: 11400000, guid: 2b592099da298744abb1d64fc2efbe98, type: 2}
 --- !u!54 &7341783348007116941
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1480455680030857653}
   - component: {fileID: 2863808193964810772}
   - component: {fileID: 6050265772737861648}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: log
   m_TagString: Untagged
   m_Icon: {fileID: 0}

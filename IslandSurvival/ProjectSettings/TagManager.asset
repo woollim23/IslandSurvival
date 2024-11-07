@@ -17,20 +17,15 @@ TagManager:
   - Resource
   - Wall
   - Ground
+  - Structure
+  - WaterInteractive
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Animal
   - 
   - 
   - 

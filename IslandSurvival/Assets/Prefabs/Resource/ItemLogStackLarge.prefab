@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5031568877160428251}
   - component: {fileID: 8854747419913611837}
   - component: {fileID: 1755962795793719224}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ItemLogStackLarge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b71588098592b145b24bb37f5d276ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemData: {fileID: 11400000, guid: 2b592099da298744abb1d64fc2efbe98, type: 2}
+  data: {fileID: 11400000, guid: 2b592099da298744abb1d64fc2efbe98, type: 2}
 --- !u!54 &8854747419913611837
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 9110680628231278334}
   - component: {fileID: 8420584447016732909}
   - component: {fileID: 4498635538076537314}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: log_stackLarge
   m_TagString: Untagged
   m_Icon: {fileID: 0}

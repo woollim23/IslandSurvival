@@ -1,6 +1,9 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,17 +28,25 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity; // 회전 민감도
     private Vector2 mouseDelta; // inputsystem으로 입력 받는 마우스 델타값
     public bool canLook = true;
+    public bool isInputBlocked = false; // 입력을 막는 플래그
 
+    [Header("event")]
     public Action inventory;
-    public event Action onSettingScreen;
+    public event Action onCancelStruct;
+    public event Action<Equip> onAttackAction; // 공격 이벤트
+    public event Action<bool> onMoveEvent; // 이동 애니 이벤트
+    public event Action onJumpEvent; // 점프 애니 이벤트
 
     private Rigidbody _rigidbody;
-    CapsuleCollider _capsuleCollider;
+    public CapsuleCollider _capsuleCollider;
+    public Equipment equipment;
+    public PlayerAttack playerAttack;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+        equipment = GetComponent<Equipment>();
     }
 
     private void Start()
@@ -46,13 +57,20 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isInputBlocked)
+        {
+            return; // 입력을 막는 중이면 Update 함수 종료
+        }
         Move();
         CheckWall();
-        IsGrounded();
     }
 
     private void LateUpdate()
     {
+        if (isInputBlocked)
+        {
+            return; // 입력을 막는 중이면 Update 함수 종료
+        }
         if (canLook)
         {
             CameraLook();
@@ -142,6 +160,7 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
         // 캐릭터 오일러각 회전
         // Rotation y에 마우스 델타 x값을 넣어줘야함 * 마우스 민감도
+        
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -150,10 +169,12 @@ public class PlayerController : MonoBehaviour
         {
             // 버튼 클릭하는 동안 수행
             curMovementInput = context.ReadValue<Vector2>();
+            onMoveEvent?.Invoke(true);
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             curMovementInput = Vector2.zero;
+            onMoveEvent?.Invoke(false);
         }
     }
 
@@ -169,22 +190,35 @@ public class PlayerController : MonoBehaviour
             if (IsGrounded())
             {
                 _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
-                //CharacterManager.Instance.Player.condition.UseStamina(jumpPower / 10);
+                CharacterManager.Instance.Player.condition.UseStamina(jumpPower / 10);
+                onJumpEvent?.Invoke();
             }
         }
     }
 
-    public void OnSetting(InputAction.CallbackContext context)
+    public void OnCancel(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            onSettingScreen?.Invoke();
-            ToggleCursor();
+            onCancelStruct?.Invoke();
+        }
+    }
+
+    // TODO : PlayerAttack
+    public void OnAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed && canLook)
+        {
+            onAttackAction?.Invoke(equipment.curEquip);
         }
     }
 
     public void OnInventory(InputAction.CallbackContext context)
     {
+        if (isInputBlocked)
+        {
+            return; // 입력을 막는 중이면 Update 함수 종료
+        }
         if (context.phase == InputActionPhase.Started)
         {
             inventory?.Invoke(); // UIInventory.Toggle()
@@ -192,19 +226,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         Ray[] rays = new Ray[4]
        {
-            new Ray(transform.position - new Vector3(0, bottomOffset, 0) + (transform.forward * 0.2f), Vector3.down),
-            new Ray(transform.position - new Vector3(0, bottomOffset, 0) + (-transform.forward * 0.2f), Vector3.down),
-            new Ray(transform.position - new Vector3(0, bottomOffset, 0) + (transform.right * 0.2f), Vector3.down),
-            new Ray(transform.position - new Vector3(0, bottomOffset, 0) + (-transform.right * 0.2f), Vector3.down)
+            new Ray(transform.position + (transform.forward * 0.2f) + (transform.up * 0.02f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (transform.up * 0.02f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (transform.up * 0.02f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) +(transform.up * 0.02f), Vector3.down)
        };
 
         for (int i = 0; i < rays.Length; i++)
         {
-            Debug.DrawRay(rays[i].origin, rays[i].direction * 0.2f, Color.red);
+            //Debug.DrawRay(rays[i].origin, rays[i].direction * 0.2f, Color.red);
             if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
             {
                 return true;
@@ -214,7 +248,7 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    void ToggleCursor()
+    public void ToggleCursor()
     {
         bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
