@@ -1,14 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PreviewObject : MonoBehaviour
 {
-    private List<Collider> colliderList = new List<Collider>(); // Ãæµ¹ÇÑ ¿ÀºêÁ§Æ®µé ÀúÀåÇÒ ¸®½ºÆ®
+    private List<Collider> colliderList = new List<Collider>(); // ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 
     [SerializeField]
-    private int layerGround; // ÁöÇü ·¹ÀÌ¾î (¹«½ÃÇÏ°Ô ÇÒ °Í)
-    private const int ignoreRaycastLayer = 2;  // ignore_raycast (¹«½ÃÇÏ°Ô ÇÒ °Í)
+    private int layerGround; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ ï¿½ï¿½)
+    private const int ignoreRaycastLayer = 2;  // ignore_raycast (ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ ï¿½ï¿½)
 
     [SerializeField]
     private Material green;

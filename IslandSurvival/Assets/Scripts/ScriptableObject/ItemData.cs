@@ -7,7 +7,7 @@ public enum ItemType
     Equipable, //장착가능
     Resource, //제작가능자원
     Constructable, //건설가능한
-    Item
+    Miscellaneous //기타아이템
 }
 
 public enum ConsumableType
