@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class HaveItemSlot : MonoBehaviour
 {
@@ -30,7 +27,7 @@ public class HaveItemSlot : MonoBehaviour
     }
 
     /// <summary>
-    /// ÇöÀç ÀÎº¥Åä¸®ÀÇ ÀÚ¿ø ¾ÆÀÌÅÛ¸¸ º¸¿©ÁÖ±â
+    /// ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Û¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
     /// </summary>
     public void Set()
     {
