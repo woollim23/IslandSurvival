@@ -108,11 +108,6 @@ public abstract class AnimalAI : MonoBehaviour
             SetState(AIState.Idle);
             Invoke("WanderToNewLocation", UnityEngine.Random.Range(minWanderWaitTime, maxWanderWaitTime));
         }
-
-        if (playerDistance < detecDistance)
-        {
-            SetState(AIState.Attacking);
-        }
     }
 
     void WanderToNewLocation()

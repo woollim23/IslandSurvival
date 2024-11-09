@@ -39,7 +39,7 @@ public class Animal : MonoBehaviour, IDamagable
             Instantiate(dropOnDeath[UnityEngine.Random.Range(0, 4)].dropPrefab, transform.position + Vector3.up * 2, quaternion.identity);
         
         animator.SetTrigger("Death");
-        Destroy(gameObject);
+        Destroy(gameObject, 1.5f);
     }
 
     IEnumerator DamageFlash()

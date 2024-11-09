@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,14 +6,14 @@ using Random = UnityEngine.Random;
 
 public class Construct : MonoBehaviour
 {
-    bool isConstructMode;//°ÇÃàÁßÀÎÁö Ã¼Å©
+    bool isConstructMode;//ê±´ì¶•ì¤‘ì¸ì§€ ì²´í¬
     ItemData data;
 
     public PlayerController controller;
     public Transform dropPosition;
 
     public GameObject inventoryWindow;
-    public GameObject craftPanalCanvas;// ±âº» º£ÀÌ½º UI
+    public GameObject craftPanalCanvas;// ê¸°ë³¸ ë² ì´ìŠ¤ UI
     public GameObject cancelInfoTxt;
     public GameObject buildUI;
     public Image buildUIImage;
@@ -21,13 +21,13 @@ public class Construct : MonoBehaviour
     public UICraft craftInventory;
     public UIInventory inventory;
 
-    private bool isActivated = false;  // CraftManual UI È°¼º »óÅÂ
+    private bool isActivated = false;  // CraftManual UI í™œì„± ìƒíƒœ
 
-    private GameObject previewStructure; // ¹Ì¸® º¸±â ÇÁ¸®ÆÕÀ» ´ãÀ» º¯¼ö
-    private GameObject structurePrefab; // ½ÇÁ¦ »ı¼ºµÉ ÇÁ¸®ÆÕÀ» ´ãÀ» º¯¼ö 
+    private GameObject previewStructure; // ë¯¸ë¦¬ ë³´ê¸° í”„ë¦¬íŒ¹ì„ ë‹´ì„ ë³€ìˆ˜
+    private GameObject structurePrefab; // ì‹¤ì œ ìƒì„±ë  í”„ë¦¬íŒ¹ì„ ë‹´ì„ ë³€ìˆ˜ 
 
     [SerializeField]
-    private Transform playerTransform;  // ÇÃ·¹ÀÌ¾î À§Ä¡
+    private Transform playerTransform;  // í”Œë ˆì´ì–´ ìœ„ì¹˜
 
     private RaycastHit hitInfo;
     [SerializeField]
@@ -43,7 +43,7 @@ public class Construct : MonoBehaviour
     {
         controller = CharacterManager.Instance.Player.controller;
         dropPosition = CharacterManager.Instance.Player.dropPosition;
-        CharacterManager.Instance.Player.controller.onCancelStruct += CancelStruct; // Ãë¼Ò ÀÌº¥Æ® µî·Ï
+        CharacterManager.Instance.Player.controller.onCancelStruct += CancelStruct; // ì·¨ì†Œ ì´ë²¤íŠ¸ ë“±ë¡
         //needDuration = data.setDuration;
     }
 
@@ -64,7 +64,7 @@ public class Construct : MonoBehaviour
     }
 
     /// <summary>
-    /// Inventory³»¿¡ Á¦ÀÛ¹öÆ°
+    /// Inventoryë‚´ì— ì œì‘ë²„íŠ¼
     /// </summary>
     public void OnCraftButton()
     {
@@ -73,7 +73,7 @@ public class Construct : MonoBehaviour
     }
 
     /// <summary>
-    /// Å©·¡ÇÁÆ®Äµ¹ö½º Ãë¼ÒÇÏ±â¹öÆ°
+    /// í¬ë˜í”„íŠ¸ìº”ë²„ìŠ¤ ì·¨ì†Œí•˜ê¸°ë²„íŠ¼
     /// </summary>
     public void OnCancleButton()
     {
@@ -81,19 +81,19 @@ public class Construct : MonoBehaviour
         inventoryWindow.SetActive(true);
     }
     /// <summary>
-    /// ÀÎº¥Åä¸® °Ç¼³ÇÏ±â¹öÆ°
+    /// ì¸ë²¤í† ë¦¬ ê±´ì„¤í•˜ê¸°ë²„íŠ¼
     /// </summary>
     public void OnBuildButton()
     {
         CharacterManager.Instance.Player.controller.ToggleCursor();
 
-        SelectStructure(inventory.selectedItem); //¼±ÅÃ°ÇÃà¹°¼¼ÆÃ
+        SelectStructure(inventory.selectedItem); //ì„ íƒê±´ì¶•ë¬¼ì„¸íŒ…
         inventoryWindow.SetActive(false);
         cancelInfoTxt.SetActive(true);
     }
 
     /// <summary>
-    /// ¼±ÅÃ°ÇÃà¹° µ¥ÀÌÅÍ¸¦ ´ã°íÀÖ´Â ÇÁ¸®ºä,°ÇÃà¹° ¼¼ÆÃ ¸Ş¼Òµå
+    /// ì„ íƒê±´ì¶•ë¬¼ ë°ì´í„°ë¥¼ ë‹´ê³ ìˆëŠ” í”„ë¦¬ë·°,ê±´ì¶•ë¬¼ ì„¸íŒ… ë©”ì†Œë“œ
     /// </summary>    
     void SelectStructure(ItemData data)
     {
@@ -102,7 +102,7 @@ public class Construct : MonoBehaviour
     }
 
     /// <summary>
-    /// ¹Ì¸®º¸±âÇÁ¸®ÆÕ À§Ä¡°ª ¸ÅÇÁ·¹ÀÓ ¾÷µ¥ÀÌÆ®
+    /// ë¯¸ë¦¬ë³´ê¸°í”„ë¦¬íŒ¹ ìœ„ì¹˜ê°’ ë§¤í”„ë ˆì„ ì—…ë°ì´íŠ¸
     /// </summary>
     private void PreviewPositionUpdate()
     {
@@ -119,13 +119,13 @@ public class Construct : MonoBehaviour
     }
 
     /// <summary>
-    /// ¿ŞÂÊ ¸¶¿ì½º Å¬¸¯½Ã °Ç¼³½ÇÇà (Duration°ª ¸¸Å­ µô·¹ÀÌ) 
+    /// ì™¼ìª½ ë§ˆìš°ìŠ¤ í´ë¦­ì‹œ ê±´ì„¤ì‹¤í–‰ (Durationê°’ ë§Œí¼ ë”œë ˆì´) 
     /// </summary>
     public IEnumerator Build()
     {
         yield return new WaitForSeconds(needDuration);
 
-        if (previewStructure && previewStructure.GetComponent<PreviewObject>().isBuildable()) //ºôµå°¡ °¡´É ÇÏ´Ù¸é
+        if (previewStructure && previewStructure.GetComponent<PreviewObject>().isBuildable()) //ë¹Œë“œê°€ ê°€ëŠ¥ í•˜ë‹¤ë©´
         {
             Instantiate(structurePrefab, hitInfo.point, Quaternion.identity);
             Destroy(previewStructure);
@@ -153,7 +153,7 @@ public class Construct : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾ÆÀÌÅÛÀ» ¼ÒºñÇØ °Ç¹°À» ÁöÀ»¶§ »ç¿ë
+    /// ì•„ì´í…œì„ ì†Œë¹„í•´ ê±´ë¬¼ì„ ì§€ì„ë•Œ ì‚¬ìš©
     /// </summary>    
     public void UseResource(float NeedValue)
     {
@@ -161,7 +161,7 @@ public class Construct : MonoBehaviour
     }
 
     /// <summary>
-    /// °ÇÃàÃë¼Ò FkeyÀÔ·Â½Ã È£ÃâÇÔ¼ö
+    /// ê±´ì¶•ì·¨ì†Œ Fkeyì…ë ¥ì‹œ í˜¸ì¶œí•¨ìˆ˜
     /// </summary>
     private void CancelStruct()
     {

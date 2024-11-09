@@ -1,4 +1,4 @@
-using TMPro;
+ï»¿using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +12,7 @@ public class UICraft : MonoBehaviour
     public CraftSlot[] craftSlots;
     public HaveItemSlot[] haveItemSlots;
 
-    public GameObject CraftPanalCanvas;// ±âº» º£ÀÌ½º UI
+    public GameObject CraftPanalCanvas;// ê¸°ë³¸ ë² ì´ìŠ¤ UI
     public Transform CraftSlotsPanel;
     public Transform CraftNeedItemSlotsPanel;
     public Transform dropPosition;
@@ -32,8 +32,8 @@ public class UICraft : MonoBehaviour
     public int selectedItemIndex = 0;
 
 
-    //TODO : ÇÊµå¿¡ µå¶øµÊ
-    //TODO : ÀÎº¥Åä¸®¿¡¼­ °¡Á®¿À±â
+    //TODO : í•„ë“œì— ë“œëë¨
+    //TODO : ì¸ë²¤í† ë¦¬ì—ì„œ ê°€ì ¸ì˜¤ê¸°
     
     private void Start()
     {
@@ -75,7 +75,7 @@ public class UICraft : MonoBehaviour
         cancelButton.SetActive(true);
     }
     /// <summary>
-    /// ¼±ÅÃÇÑ Á¦ÀÛ¹°
+    /// ì„ íƒí•œ ì œì‘ë¬¼
     /// </summary>    
     public void SelectCraftItem(int index)
     {
@@ -137,7 +137,7 @@ public class UICraft : MonoBehaviour
     }
 
     /// <summary>
-    /// Å©·¡ÇÁÆ®Äµ¹ö½º ³» Á¦ÀÛÇÏ±â¹öÆ°
+    /// í¬ë˜í”„íŠ¸ìº”ë²„ìŠ¤ ë‚´ ì œì‘í•˜ê¸°ë²„íŠ¼
     /// </summary>
     public void OnStartCraftButton()
     {
@@ -148,7 +148,7 @@ public class UICraft : MonoBehaviour
     }
 
     /// <summary>
-    /// Á¦ÀÛÇÏ±â¿Ï·á½Ã ÀÚµ¿À¸·Î ÇÊµå¿¡ µå·Ó
+    /// ì œì‘í•˜ê¸°ì™„ë£Œì‹œ ìë™ìœ¼ë¡œ í•„ë“œì— ë“œë¡­
     /// </summary>    
     void DropStructure(ItemData data)
     {
