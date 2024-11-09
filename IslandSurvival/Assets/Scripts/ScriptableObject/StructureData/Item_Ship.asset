@@ -24,4 +24,4 @@ MonoBehaviour:
   constructables: []
   previewStructure: {fileID: 1679243502283118566, guid: bbe459c5fd2896846b3bb535511433c0, type: 3}
   RealStructurePrefab: {fileID: 4876434888601750788, guid: 2fe65b5e2de74484da1178b319841c08, type: 3}
-  setDuration: 0
+  setDuration: 10
