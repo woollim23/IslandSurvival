@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1647762371017158925}
   - component: {fileID: -1126764989928412075}
   - component: {fileID: 3229425158727150570}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: StumpPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
