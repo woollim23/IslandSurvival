@@ -35,7 +35,7 @@ public class Construct : MonoBehaviour
     [SerializeField]
     private float range;
     private float needItemIndex;
-    private float needDuration = 5f;
+    private float needDuration;
     private float curDuration = 0f;
     private ItemData selectedItem;
 
@@ -44,22 +44,24 @@ public class Construct : MonoBehaviour
         controller = CharacterManager.Instance.Player.controller;
         dropPosition = CharacterManager.Instance.Player.dropPosition;
         CharacterManager.Instance.Player.controller.onCancelStruct += CancelStruct; // 취소 이벤트 등록
-        //needDuration = data.setDuration;
     }
 
     void Update()
     {
+
         if (previewStructure != null)
         {
             PreviewPositionUpdate();
         }
-        if (Input.GetButtonDown("Fire2"))
+        if (previewStructure!=null && Input.GetButtonDown("Fire2"))
         {
+            //우클릭 한번 더 눌렀을 경우, 다시 실행되지 않게 오류수정
             cancelInfoTxt.SetActive(false);
-
             buildUI.SetActive(true);
-            BuildUISet();
-            StartCoroutine("Build");            
+        }
+        if (buildUI.activeSelf == true)
+        {
+            StartCoroutine(BuildUISet());
         }
     }
 
@@ -88,6 +90,7 @@ public class Construct : MonoBehaviour
         CharacterManager.Instance.Player.controller.ToggleCursor();
 
         SelectStructure(inventory.selectedItem); //선택건축물세팅
+        SelectedStructureDuration(inventory.selectedItem); //버튼클릭시 듀레이션값넣어줌
         inventoryWindow.SetActive(false);
         cancelInfoTxt.SetActive(true);
     }
@@ -100,7 +103,14 @@ public class Construct : MonoBehaviour
         previewStructure = Instantiate(data.previewStructure, playerTransform.position + playerTransform.forward, Quaternion.identity);
         structurePrefab = data.RealStructurePrefab;
     }
-
+    /// <summary>
+    /// SO데이터의 Duration값 세팅
+    /// </summary>
+    void SelectedStructureDuration(ItemData data)
+    {
+        needDuration = data.setDuration;
+    }
+    
     /// <summary>
     /// 미리보기프리팹 위치값 매프레임 업데이트
     /// </summary>
@@ -121,10 +131,8 @@ public class Construct : MonoBehaviour
     /// <summary>
     /// 왼쪽 마우스 클릭시 건설실행 (Duration값 만큼 딜레이) 
     /// </summary>
-    public IEnumerator Build()
+    public void Build()
     {
-        yield return new WaitForSeconds(needDuration);
-
         if (previewStructure && previewStructure.GetComponent<PreviewObject>().isBuildable()) //빌드가 가능 하다면
         {
             Instantiate(structurePrefab, hitInfo.point, Quaternion.identity);
@@ -132,14 +140,12 @@ public class Construct : MonoBehaviour
             ResetPreview();
         }
         buildUI.SetActive(false);
+        //빌드가 완료된 후, 건설중 BuildUI꺼주기 
     }
 
-    private void BuildUISet()
-    {       
-        buildUIImage.fillAmount = curDuration / needDuration;
-        
-        if(curDuration >= needDuration)
-            return;
+    private IEnumerator BuildUISet( )
+    {
+        buildUIImage.fillAmount = 0;
 
         if (curDuration < needDuration)
         {
@@ -150,6 +156,10 @@ public class Construct : MonoBehaviour
                 curDuration = needDuration;
             }
         }
+        buildUIImage.fillAmount = curDuration / needDuration;
+        yield return new WaitForSeconds(needDuration);
+        curDuration = default;
+        Build();
     }
 
     /// <summary>
@@ -171,7 +181,6 @@ public class Construct : MonoBehaviour
         ResetPreview();
         craftPanalCanvas.SetActive(false);
         cancelInfoTxt.SetActive(false);
-        buildUI.SetActive(false);
     }
 
     private void ResetPreview()
